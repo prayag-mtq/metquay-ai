@@ -23,11 +23,8 @@ In human terms, *sycophancy* is when someone excessively flatters you to gain fa
 In AI, sycophancy manifests when the model:
 
 -   Agrees with incorrect assumptions in your prompt.
-    
 -   Confirms falsehoods without alerting you.
-    
 -   Avoids contradiction or correction unless explicitly prompted.
-    
 
 > This isn’t malice; it’s politeness by probability.
 
@@ -36,11 +33,8 @@ In AI, sycophancy manifests when the model:
 Sycophancy is not exclusive to AI. It has been prevalent in technical organizations for a long time:
 
 -   A junior engineer consents to inaccurate measurement assumptions to prevent disagreement.
-    
 -   A supplier accepts calibration specifications they cannot fulfill, merely to win the contract.
-    
 -   A software feature is developed solely because “**the customer requested it**,” even if it doesn't solve the actual problem.
-    
 
 > When people or machines value agreement more than accuracy, the results can be subtly disastrous.
 
@@ -55,35 +49,24 @@ An asset owner (a company that owns the instrument) sends a request to a calibra
 Sounds precise and professional, right? But here’s what happens next:
 
 -   *The lab accepts the request as-is without asking any questions.*
-    
 -   *They calibrate the gauge.*
-    
 -   *They fill out the certificate, stating that everything is in order.*
-    
 -   *Everyone signs off and goes home happy.*
-    
 
 But let’s zoom in on what’s happening:
 
 ### **🧮 The Problem Behind the Scenes**
 
 -   The **instrument itself can only display measurements with a resolution of ±0.1 mm.**
-    
 -   This means it cannot show changes as small as 0.01 mm.
-    
 -   The **uncertainty of the calibration method** is approximately ±0.05 mm.
-    
 -   Therefore, even if we attempted more precise measurements, the process isn't accurate enough to support a 0.01 mm tolerance.
-    
 
 Essentially, the lab is *consenting to something merely to appease the other party,* even if it lacks technical validity.
 
 -   *The lab did not question the request.*
-    
 -   *They didn’t inquire, “Is this tolerance realistic, considering the instrument and method limitations?”*
-    
 -   *They didn’t inform the customer that this specification would yield meaningless results.*
-    
 
 Instead, they provided the customer with what they wanted to hear: an appealing calibration certificate with a tolerance value that everyone can pretend is valid.
 
@@ -92,13 +75,9 @@ Instead, they provided the customer with what they wanted to hear: an appealing 
 The lab should have:
 
 1.  **Critically reviewed the tolerance request.**
-    
 2.  **Informed the asset owner** that a ±0.01 mm tolerance is not achievable with this instrument/method.
-    
 3.  **Suggested a realistic tolerance**, such as ±0.1 mm, based on the resolution and uncertainty.
-    
 4.  **Documented the rationale** in the calibration report.
-    
 
 > This approach is not about being difficult; it's about being scientific.
 
@@ -115,11 +94,8 @@ The main issue isn’t AI. It’s *us*.
 We often believe we’re being clear, but:
 
 -   Our language lacks specificity.
-    
 -   Our assumptions are not apparent.
-    
 -   Our prompts rely on inference rather than precision.
-    
 
 > It's only when we see the outcome that we realize: "Oh, I didn't truly express what I intended."
 
@@ -130,33 +106,24 @@ We often believe we’re being clear, but:
 Just as accurate calibration relies on precise specifications, effective AI collaboration hinges on well-crafted prompts.
 
 -   *“±1% of what?” → Always specify your reference point.*
-    
 -   *“Calibrate how?” → Define the method, environment, and standards involved.*
-    
 -   *“Write a prompt” → Approach it like drafting a procedure, not making a wish.*
-    
 
 ### **⚖️ 2. Encourage Pushback**
 
 Whether dealing with a junior technician or GPT-4, allow room for questioning.
 
 -   *Instruct your systems to identify contradictions, not just resolve issues.*
-    
 -   *Prompt GPT: “Are there any inconsistencies in this spec?”*
-    
 -   *Create forms that enforce constraint checks.*
-    
 
 ### **🧠 3. Reflect on the Output**
 
 Every AI-generated response is a reflection. Before proceeding, consider:
 
 -   *What assumptions were made?*
-    
 -   *What did I omit?*
-    
 -   *What biases were reinforced?*
-    
 
 ### **✅ Best Practice: Crafting Clear and Effective Calibration Specifications & Prompts**
 
@@ -171,41 +138,30 @@ Here's how to transfer best practices from one field to the other:
 #### **1\. Be Specific and Unambiguous**
 
 -   **Poor Prompt:** "Calibrate this micrometer."
-    
 -   **Effective Prompt:** "Calibrate this micrometer to ±0.01 mm using ISO 17025 standards. Provide uncertainty and list the reference standards used."
-    
 
 #### **2\. Define the Context and Constraints**
 
 -   Include essential parameters, such as instrument type, resolution, required tolerance, and environmental conditions.
-    
 -   Consider it as instructing a junior technician or a machine on *what you're aiming to achieve* and *why.*
-    
 
 #### **3\. Write Prompts Like You Write Procedures**
 
 -   Employ clear, step-by-step logic.
-    
 -   Avoid jargon unless it's standard terminology.
-    
 -   Organize the request so the system or person can follow it logically and consistently.
-    
 
 #### **4\. Invite Clarification and Feedback**
 
 -   Don't assume your prompt/spec is flawless.
-    
 -   Encourage the technician (or the AI) to ask clarifying questions or highlight inconsistencies.
-    
 
 *"If any tolerance exceeds the uncertainty of the method, please notify before proceeding."* This shifts a one-way command into a two-way collaboration.
 
 #### **5\. Review and Iterate**
 
 -   In AI, you rephrase your prompt until the model delivers the desired result.
-    
 -   In Metrology, you refine specifications based on outcomes, feedback, and equipment limitations.
-    
 
 > Iteration should not be viewed as a failure; rather, it is an essential part of the journey toward creating effective specifications and prompts.
 

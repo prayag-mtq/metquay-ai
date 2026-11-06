@@ -1,6 +1,6 @@
 import { load, type CheerioAPI } from "cheerio";
 import matter from "gray-matter";
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { pathToFileURL } from "node:url";
 import sharp from "sharp";
@@ -81,7 +81,13 @@ function prepareTables($: CheerioAPI) {
   });
 }
 
-function createTurndown() {
+export function tightenLists($: CheerioAPI, root: ReturnType<CheerioAPI>) {
+  root.find("li > p").each((_, p) => {
+    $(p).replaceWith(`${$(p).html() ?? ""} `);
+  });
+}
+
+export function createTurndown() {
   const service = new TurndownService({
     headingStyle: "atx",
     codeBlockStyle: "fenced",
@@ -126,6 +132,7 @@ export function migrateBlog(
   const first = body.children().first();
   if (/^h[1-6]$/i.test(first.prop("tagName") ?? "") && first.text().trim() === title) first.remove();
   prepareTables($);
+  tightenLists($, body);
   body.find("a[href]").each((_, a) => {
     const href = normalizeHref($(a).attr("href")!);
     if (href) $(a).attr("href", href);
@@ -184,6 +191,7 @@ async function main() {
     writeFileSync(join("content/blog", `${slug}.mdx`), mdx);
     for (const image of images) {
       const out = join("public", image.dest);
+      if (existsSync(out)) continue;
       mkdirSync(dirname(out), { recursive: true });
       await sharp(image.src).resize({ width: 1400, withoutEnlargement: true }).webp({ quality: 82 }).toFile(out);
     }

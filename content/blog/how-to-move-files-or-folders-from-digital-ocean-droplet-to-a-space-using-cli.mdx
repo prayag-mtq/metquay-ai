@@ -22,17 +22,11 @@ Here is a much smarter way to address this problem. It comes in handy whenever y
 Login to your Digital Ocean Account
 
 1.  From the green button at the right-hand top corner select **CREATE** & click **Spaces**
-    
 2.  Choose the data center location
-    
 3.  Allow file listing ( choose Restrict if you want this space to be secured with an access key)
-    
 4.  Give a unique subdomain name for your space
-    
 5.  Select the project
-    
 6.  Create the space
-    
 
   
 
@@ -57,31 +51,9 @@ Read about s3cmd here: [Examples of s3cmd 2. x Usage with DigitalOcean Spaces | 
   
 
 1.  SSH into your digital ocean Centos 7 droplet
-    
 2.  Install s3cmd using the command **yum install s3cmd**
-    
 3.  Configure s3cmd **s3cmd --configure**
-    
-4.  It will prompt for the configuration details
-    
-    **Access Key:** *\<your access key>*
-    
-    **Secret Key :** *\<your secret key>*
-    
-    **Default Region \[US\]:***\<hit enter for default>*
-    
-    **S3 Endpoint:***\<copy the endpoint from the settings tab under spaces>*
-    
-    **DNS-style bucket+hostname: port template for accessing a bucket \[%(bucket)s.s3.amazonaws.com\]:**
-    
-    *\<copy URL under the space name -- (image reference attached)>*
-    
-    **Encryption password:***\<save the encryption password in a safe vault>*
-    
-    **Use HTTPS protocol \[Yes\]**: Yes
-    
-    **Test access with supplied credentials? \[Y/n\]** Y
-    
+4.  It will prompt for the configuration details **Access Key:** *\<your access key>* **Secret Key :** *\<your secret key>* **Default Region \[US\]:***\<hit enter for default>* **S3 Endpoint:***\<copy the endpoint from the settings tab under spaces>* **DNS-style bucket+hostname: port template for accessing a bucket \[%(bucket)s.s3.amazonaws.com\]:** *\<copy URL under the space name -- (image reference attached)>* **Encryption password:***\<save the encryption password in a safe vault>* **Use HTTPS protocol \[Yes\]**: Yes **Test access with supplied credentials? \[Y/n\]** Y
 
   
 

@@ -25,3 +25,6 @@ Decisions deferred by Prayag (spec §12) and findings from the Framer crawl. Eac
 - Solutions step 04 copy typo "I real expression engine" fixed to "A real expression engine".
 - Resources: the 7 playbook "Download Free" buttons had no target on the live site and the crawl has no playbook PDFs. Each is now "Request this playbook" → contact form (topic preselected). Supply the PDFs to switch these to direct downloads.
 - Ecosystem: "Read the API docs" had no target on the live site. Pointed at the contact form (expert) until a docs URL exists.
+- Legal pages contain drafting placeholders copied from the live site, which need legal review: Privacy "[e.g., Google Analytics / HubSpot]", "[metquay.ai/subprocessors]", "[confirm vendor terms and retention]"; Security "[a validation package / IQ-OQ documentation]"; Terms "[30]".
+- Legal tables (Privacy: data categories, purposes, subprocessors; Security: controls, compliance) were Framer link-grids. Rebuilt as real tables. Repeated cells the crawl collapsed were restored by row position: two "Legitimate interests" rows, subprocessor locations "US", ISO/IEC 27001 "Planned". Please verify.
+- Company: Seby George has no photo on the live site (initials shown).

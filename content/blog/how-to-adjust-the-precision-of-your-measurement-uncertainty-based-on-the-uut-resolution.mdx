@@ -23,11 +23,8 @@ Metquay's worksheets are a powerful way to automate your uncertainty calculation
 Metquay worksheet screenshot
 
 -   In the first row of the above worksheet, we have the **Nominal, Resolution, Adjustment & Result (Nominal + Adjustment)** and each of these values has units associated with them.
-    
 -   To get our Result right, we need to convert the Nominal and Adjustment to the Result Unit before addition. ie Adjustment (**1000 mv**) is converted to the **1V** ( because our result is reported in **V**) before adding to Nominal, which gives us **2V** as the Result.
-    
 -   Rows 2 & 3 show variations with different units and values.
-    
 
 **1 V + 1000 mv** should result in 2V, but our result shows 2.000 V. Are we missing something here? **Yes, we are!**
 
@@ -36,11 +33,8 @@ Metquay worksheet screenshot
 For this to work for any chosen unit, we need to convert our resolution to the unit of the result.
 
 -   Convert the resolution value to the unit of the result. If we take the second row in the first 👆 screenshot as an example, **0.001 V → mV ie 1 mV**
-    
 -   Now find the decimal digit count of **1 mv → ie 0**
-    
 -   Round the result to zero decimal places, so our result will be **2000 mV**
-    
 
 Here is a sample of the datasheet part of the certificate
 
