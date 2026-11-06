@@ -1,0 +1,114 @@
+---
+title: >-
+  Exploring the concept of Test Accuracy Ratio (TAR) and Test Uncertainty Ratio
+  (TUR) Ver 2023
+description: >-
+  Rising industry standards are driving the change by leading the industry to
+  look upon the uncertainty of measurement and thereby adopting TUR over TAR.
+  TUR vouches for better conformity to the industry standards about calibration,
+  wherein the laboratories are required to document the corresponding decision
+  rule that is employed, taking into consideration, and understanding the true
+  purpose of TUR, which is to prevent false acceptance of nonconforming items.
+  Such mechanisms can help by reducing calibration costs and downtimes.
+date: '2022-09-09'
+category: Efficient Approaches
+---
+For every measurement, the answer to the question of how “good” a measurement needs to be to meet a particular specification is often dictated by what is called ‘Decision Rules.
+
+TAR (Test Accuracy Ratio) and TUR (Test Uncertainty Ratio) are the industry's most commonly used decision rules.
+
+To better understand these terminologies, we need to familiarise ourselves with some basic concepts, such as:
+
+  
+
+1\. What is **Accuracy**?
+
+Accuracy is the closeness of agreement between a measured quantity value and the true quantity value of a measurand.
+
+NOTE 1 The concept ‘measurement accuracy’ is not a quantity and is not given a numerical quantity value. A measurement is said to be more accurate when it offers a smaller measurement error.
+
+NOTE 2 The term “measurement accuracy” should not be used for the measurement of trueness and the term “measurement precision” should not be used for ‘measurement accuracy’, which, however, is related to both these concepts.
+
+NOTE 3 ‘Measurement accuracy’ is sometimes understood as the closeness of agreement between measured quantity values that are being attributed to the measurand.
+
+*Reference: The international vocabulary of metrology – Basic and general concepts and associated terms (VIM) ( 3rd edition)*
+
+  
+
+2\. What is **Uncertainty**?
+
+Uncertainty of measurement is a non-negative parameter characterizing the dispersion of the quantity values being attributed to a measurand, based on the information used.
+
+NOTE 1: Measurement uncertainty includes components arising from systematic effects, such as components associated with corrections and the assigned quantity values of measurement standards, as well as definitional uncertainty. Sometimes estimated systematic effects are not corrected for but, instead, associated measurement uncertainty components are incorporated.
+
+NOTE 2 The parameter may be, for example, a standard deviation called standard measurement uncertainty (or a specified multiple of it), or the half-width of an interval, having a stated coverage probability.
+
+NOTE 3 Measurement uncertainty comprises, in general, many components. Some of these may be evaluated by Type A evaluation of measurement uncertainty from the statistical distribution of the quantity values from a series of measurements and can be characterized by standard deviations. The other components, which may be evaluated by Type B evaluation of measurement uncertainty, can also be characterized by standard deviations, evaluated from probability density functions based on experience or other information.
+
+NOTE 4 In general, for a given set of information, it is understood that the measurement uncertainty is associated with a stated quantity value attributed to the measurand. A modification of this value results in a modification of the associated uncertainty.
+
+*Reference: The international vocabulary of metrology – Basic and general concepts and associated terms (VIM) ( 3rd edition)*
+
+  
+
+Now that we are familiar with the terms, let us move on to what TAR is.
+
+**TAR=** **Maximum Allowable Error (MAE) of the measuring instrument** ***/ Accuracy of the reference standard.***
+
+TAR embodies the usage of qualitative analysis and deploys accuracy in its calculation, which is merely an indication of the ‘potential quality of the instrument'.
+
+The concept of uncertainty and accuracy are often misinterpreted and seem confusing. ISO/IEC 7025 states the importance of calculating uncertainty correctly as a primary requirement when it comes to quality assurance. If not specified in detail, it is often very easy for manufacturers to adopt shortcuts and proceed with relying on accuracy details alone.
+
+**TUR on the other hand = Tolerance of the unit under test (UUT) / 95% Measurement uncertainty of the measurement process ( TUR = TL/U)**
+
+*Reference: ILAC Guidelines on Decision Rules and Statements of Conformity (ILAC-G8:09/2019)*
+
+  
+
+TUR emphasizes the calibration process uncertainty and helps give the end user a ratio that is more reliable and meaningful in terms of implementation.
+
+Let us look at an example of how a real-life scenario calculation is done during measurement.
+
+The TAR is usually expressed as a percentage of tolerance (25%), or a single value (4). Let us consider an example where the TAR is calculated as a single value and is required to be equal to or greater than four.
+
+For the first example, a manufactured part is measured, and the measured feature is a 20 mm diameter shaft with a tolerance of ± 0.015 mm. The measuring instrument is a 0-25 mm outside micrometer, with a specified accuracy tolerance of ± 0.001 mm.
+
+**TAR=** **Maximum Allowable Error (MAE) of the measuring instrument** ***/ Accuracy of the reference standard.***
+
+\= ±0.015 mm/ ± 0.001 mm = 15
+
+In this first example, the TAR = 15 is acceptable as it is greater than the requirement of four.
+
+Based on this rule, the outside micrometer is an acceptable choice for measuring equipment.
+
+  
+
+For a second example, let us look at the calibration of this same outside micrometer. The calibration is done using Grade AS-1 gage blocks. The tolerance for Grade AS-1 gage blocks (as per standard) is up to 25 mm i.e. ± 0.30 µm.
+
+The TAR is calculated as 𝑇𝐴𝑅 = **TAR=** **Maximum Allowable Error (MAE) of the measuring instrument** ***/ Accuracy of the reference standard.***\= ± 1 μm/ ± 0.3 μm = 3.3
+
+In this case, the TAR = 3.3 is not acceptable, and different gauge blocks should be considered.
+
+This depicts a simple example of how TAR is used in determining decision values.
+
+As more and more calibration laboratories started calculating and documenting uncertainty, the practice of using TAR calculations began to be replaced with the test uncertainty ratio, TUR. The use of acceptance and rejection decision rules with TUR requirements is now found in many national and international standards for the calibration of measuring equipment.
+
+TUR is calculated in a similar manner as the TAR; however, an estimate for the measurement uncertainty is needed. For the same micrometer example discussed above – a 0-25 mm outside micrometer is calibrated with Grade 0 gage blocks. In that example, the estimate of the expanded measurement uncertainty is ± 0.25 µm.
+
+The TUR is calculated as 𝑇𝑈𝑅 = ± 𝑇𝑜𝑙𝑒𝑟𝑎𝑛𝑐𝑒 𝑏𝑒𝑖𝑛𝑔 𝑐ℎ𝑒𝑐𝑘𝑒𝑑/ ± 95% expanded measurement uncertainty of the measurement process
+
+\= ± 1 μm/ ± 0.25 μm = 4
+
+If Grade 0 gage blocks with a tolerance of ± 0.14 µm up to 25 mm are used, the new TAR is calculated as 𝑇𝐴𝑅 =**TAR=** **Maximum Allowable Error (MAE) of the measuring instrument** ***/ Accuracy of the reference standard.*** = ±1 μm/ ± 0.14 μm = 7.1
+
+The TUR ≥ 4 requirement is therefore achieved, and a simple acceptance decision rule can be used. In this example, the TUR = 4 when the TAR = 7.1. Hence, provides proof of why TUR provides more insights than TAR, for a decision value that is close to the expected standards.
+
+Rising industry standards are driving the change by leading the industry to look upon the uncertainty of measurement and thereby adopting TUR over TAR. TUR vouches for better conformity to the industry standards about calibration, wherein the laboratories are required to document the corresponding decision rule that is employed, taking into consideration, and understanding the true purpose of TUR, which is to prevent false acceptance of nonconforming items. Such mechanisms can help by reducing calibration costs and downtimes.
+
+  
+
+To gain next-level knowledge in TAS Vs TUR we would like to point you toward the following blog from Morehouse instruments
+
+[https://mhforce.com/tar-versus-tur-why-tar-should-be-rip-asap](https://mhforce.com/tar-versus-tur-why-tar-should-be-rip-asap)
+
+Also, watch this informative video [https://www.youtube.com/watch?v=1h9TYLFeXaQ](https://www.youtube.com/watch?v=1h9TYLFeXaQ)

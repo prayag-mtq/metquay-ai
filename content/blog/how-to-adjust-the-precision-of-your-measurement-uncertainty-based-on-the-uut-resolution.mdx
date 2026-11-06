@@ -1,0 +1,53 @@
+---
+title: >-
+  How to adjust the precision of the result based on the UUT resolution in
+  Metquay Version 2024?
+description: >-
+  Metquay's worksheets are a powerful way to automate your uncertainty
+  calculations so that your technicians do not have to rely on disparate excel
+  spreadsheets and paper-based calculations thereby saving valuable technician
+  time and increased quality of delivery.
+date: '2021-06-03'
+category: Efficient Approaches
+---
+> It's a requirement in instrument calibrations where the precision of the measurement uncertainty reported in the calibration certificate should match the resolution of the UUT. Doing this manually is not only painful and time-consuming but one of the biggest causes of human errors in the calibration certificate preparation process.
+
+Metquay's worksheets are a powerful way to automate your uncertainty calculations so that your technicians do not have to rely on disparate excel spreadsheets and paper-based calculations thereby saving valuable technician time and increased quality of delivery.
+
+*Here is a quick glimpse into how you can set up Metquay sheets so that the precision of your measurement uncertainty is automatically adjusted to your UUT resolution no matter which units are used.*
+
+## Step 1: Since each of your values could be in different units, first you need to get your unit conversions right.
+
+<Figure src="/blog/how-to-adjust-the-precision-of-your-measurement-uncertainty-based-on-the-uut-resolution/1.webp" alt="" />
+
+Metquay worksheet screenshot
+
+-   In the first row of the above worksheet, we have the **Nominal, Resolution, Adjustment & Result (Nominal + Adjustment)** and each of these values has units associated with them.
+    
+-   To get our Result right, we need to convert the Nominal and Adjustment to the Result Unit before addition. ie Adjustment (**1000 mv**) is converted to the **1V** ( because our result is reported in **V**) before adding to Nominal, which gives us **2V** as the Result.
+    
+-   Rows 2 & 3 show variations with different units and values.
+    
+
+**1 V + 1000 mv** should result in 2V, but our result shows 2.000 V. Are we missing something here? **Yes, we are!**
+
+## Step 2: We need to adjust the precision of our result (2V) based on our resolution ie (0.001V) so that we can report our result as 2.000V.
+
+For this to work for any chosen unit, we need to convert our resolution to the unit of the result.
+
+-   Convert the resolution value to the unit of the result. If we take the second row in the first 👆 screenshot as an example, **0.001 V → mV ie 1 mV**
+    
+-   Now find the decimal digit count of **1 mv → ie 0**
+    
+-   Round the result to zero decimal places, so our result will be **2000 mV**
+    
+
+Here is a sample of the datasheet part of the certificate
+
+<Figure src="/blog/how-to-adjust-the-precision-of-your-measurement-uncertainty-based-on-the-uut-resolution/2.webp" alt="" />
+
+Metquay certificate datasheet
+
+Believe it or not, the entire process can be automated using a single line expression and can be re-used across any number of cal points or instruments using Metquay worksheets.
+
+To learn more about Metquay worksheets, please drop us an email at [consulting@metquay.com](mailto:consulting@metquay.com) or sign up for a free trial at [https://www.metquay.com](/)

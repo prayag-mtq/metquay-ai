@@ -1,3 +1,4 @@
+import { BlogTeaser } from "@/components/home/BlogTeaser";
 import { Hero } from "@/components/home/Hero";
 import { HomeFaq } from "@/components/home/HomeFaq";
 import { PlatformFeatures } from "@/components/home/PlatformFeatures";
@@ -17,6 +18,7 @@ export default function HomePage() {
       <Testimonials />
       <Playbooks />
       <HomeFaq />
+      <BlogTeaser />
       <CtaBand />
     </>
   );

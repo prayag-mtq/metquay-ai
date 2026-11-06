@@ -19,3 +19,6 @@ Decisions deferred by Prayag (spec §12) and findings from the Framer crawl. Eac
 - `mailto:consluting@metquay.com` (typo) in the post "Say goodbye to disconnected systems". Fixed to consulting@.
 - All 97 blog posts had no `<h1>`. The post title is now the H1.
 - Home hero lead now reads "ISO/IEC 17025 compliant calibration management software" (spec §7 keyword placement). Needs Prayag's sign-off.
+- Blog category typo "Efficient Approches" corrected to "Efficient Approaches".
+- Legacy links inside posts: `/faq` → `/contact#faq`, `/metconnect/` → `/ecosystem#fluke`, `/blog/hashtags/*` unlinked (pages don't exist).
+- All old blog banner images (AI-generated art) dropped; every post uses the generated cover until real app screenshots are supplied (#9).

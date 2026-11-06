@@ -1,0 +1,73 @@
+---
+title: Linear Interpolation Made Simple With Metquay 2023 update
+description: >-
+  Linear interpolation can be best explained as the easiest method for
+  estimating the value of a function between any two known values. In other
+  words, it is a method of curve fitting using linear polynomials to construct
+  new data points within the range of a discrete set of known data points. Its
+  application ranges across many fields, including engineering, physics,
+  biology, finance, and statistics. 
+date: '2022-12-20'
+category: Efficient Approaches
+---
+*Linear interpolation can be best explained as the easiest method for estimating the value of a function between any two known values. In other words, it is a method of curve fitting using linear polynomials to construct new data points within the range of a discrete set of known data points. Its application ranges across many fields, including engineering, physics, biology, finance, and statistics.*
+
+  
+
+**Now, what is this formula used for in daily business applications?**
+
+  
+
+This formula is used mainly in data forecasting, prediction, market research, etc. Given a table, this is used as one of the best methods for identifying the unknown values that could exist within a table.
+
+Now, let us go into detail about what the formula is:
+
+<Figure src="/blog/linear-interpolation-made-simple-with-metquay/1.webp" alt="Linear interpolation formula" />
+
+Linear interpolation formula
+
+  
+
+Since we understand the parameter values, let us delve into a simple real-life example to understand its application.
+
+Consider a classroom, where a teacher is noting down the height of all 5 students in ascending order with respect to height. After the students leave the teacher notices she has forgotten to jot down the height of one boy in the fourth position. Since she is on a deadline, she decided to calculate an estimate and achieves this using the linear interpolation formula.
+
+Let us consider some readings she initially took:
+
+  
+
+| Order of position of the students (x) | 1 | 2 | 3 | 5 |
+| --- | --- | --- | --- | --- |
+| Height in feet (y) | 3 | 4.5 | 5 | 6 |
+
+  
+
+Now that the height of the 4th child is missing the teacher uses the interpolation formula with value substitutions as given below:
+
+*x = 4 (point to perform interpolation/ the position of the child for which height must be determined.)*
+
+*x1 = 3; x2 = 5; (Position of immediate neighbors of the missing value)*
+
+*y1 = 5; y2 = 6 (Heights of immediate neighbors of the missing value)*
+
+  
+
+After value substitution to the original formula,
+
+*y=5+(4−3) (6−5) (5−3) y=5+(4−3) (6−5) (5−3)*
+
+*y = 5 + 1(1/2)*
+
+*y= 5 + 0.5* *y = 5.5*
+
+  
+
+Thus calculated, that the estimated height of the boy in the fourth position is **5.5 feet.** Hence, linear interpolation is also considered a method of filling in the gaps for any value in a table format.
+
+In the calibration front, a Calibration curve is calculated which is a linear interpolation between two calibration points (if more than one replicate, the replicates are averaged before interpolation). Linear calibration curves are desired on most fronts because they result in the best accuracy and precision.
+
+Metquay provides its customers, the ease with which they can calculate linear interpolation as a readily available function for use, thus reducing your computational time and utilizing it with more efficiency.
+
+  
+
+*To learn more about Metquay's calibration worksheets and the functions available to help you save your time in calculations reach out to us at* [*consulting@metquay.com*](mailto:consulting@metquay.com)*.*

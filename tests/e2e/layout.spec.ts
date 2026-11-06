@@ -7,7 +7,7 @@ test("marks the current page in the nav", async ({ page }) => {
   await expect(nav.locator('[aria-current="page"]')).toHaveCount(1);
 });
 
-test.fixme("keeps Blog active on a post", async ({ page }) => {
+test("keeps Blog active on a post", async ({ page }) => {
   await page.goto("/blog/what-is-the-part-of-your-work-you-would-never-let-a-machine-do");
   await expect(page.getByRole("navigation", { name: "Main" }).getByRole("link", { name: "Blog" })).toHaveAttribute(
     "aria-current",
