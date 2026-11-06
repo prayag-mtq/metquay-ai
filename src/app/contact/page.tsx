@@ -1,5 +1,6 @@
 import { CalendarDays, Mail, MapPin, Phone } from "lucide-react";
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ContactFormFromUrl } from "@/components/contact/ContactFormFromUrl";
 import { Container } from "@/components/ui/Container";
 import { Faq } from "@/components/ui/Faq";
@@ -9,11 +10,12 @@ import { site } from "@/config/site";
 import { contact } from "@/content/pages/contact";
 import { faq } from "@/content/pages/home";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact",
   description:
     "Talk to the Metquay team about calibration management software, a free trial, migration or integrations.",
-};
+  path: "/contact",
+});
 
 const { street, city, region, postalCode } = site.address;
 

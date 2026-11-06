@@ -45,3 +45,6 @@ next-env.d.ts
 /test-results/
 /playwright-report/
 /.lighthouseci/
+
+/public/llms.txt
+/public/llms-full.txt

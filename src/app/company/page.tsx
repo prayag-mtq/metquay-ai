@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { TeamGrid } from "@/components/company/TeamGrid";
 import { CtaBand } from "@/components/layout/CtaBand";
 import { PageHero } from "@/components/layout/PageHero";
@@ -10,11 +11,12 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { site } from "@/config/site";
 import { cta, hero, hq, milestones, principles, story, team } from "@/content/pages/company";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Company",
   description:
     "Metquay builds asset-centric, human-verified, AI-supercharged calibration management software. Meet the team in Bellevue, WA.",
-};
+  path: "/company",
+});
 
 const { street, city, region, postalCode } = site.address;
 

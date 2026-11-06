@@ -1,5 +1,6 @@
 import { ArrowRight, BookOpen, Clock } from "lucide-react";
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { PageHero } from "@/components/layout/PageHero";
 import { Button } from "@/components/ui/Button";
@@ -10,11 +11,12 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { site } from "@/config/site";
 import { consult, hero, intro, more, playbooks, why } from "@/content/pages/resources";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Resources & Playbooks",
   description:
     "Seven free playbooks for calibration labs: digital transformation, migration, ERP integration, Fluke MET/CAL, FDA validation, ISO/IEC 17025 audit prep and marketing.",
-};
+  path: "/resources",
+});
 
 const playbookHref = (id: string) => `/contact?intent=playbook&playbook=${id}`;
 

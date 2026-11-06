@@ -1,5 +1,6 @@
 import { LayoutDashboard, Layers, RefreshCw } from "lucide-react";
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { CtaBand } from "@/components/layout/CtaBand";
 import { PageHero } from "@/components/layout/PageHero";
 import { StepNav } from "@/components/solutions/StepNav";
@@ -9,11 +10,12 @@ import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { across, cta, hero, steps } from "@/content/pages/solutions";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Solutions",
   description:
     "Calibration software that follows every instrument from due alert to delivery: customer portal, scheduling, smart worksheets, offline capture, approval, certificates and shipping.",
-};
+  path: "/solutions",
+});
 
 const acrossIcons = { dashboard: LayoutDashboard, workspace: Layers, erp: RefreshCw };
 

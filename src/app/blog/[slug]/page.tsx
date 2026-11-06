@@ -8,6 +8,8 @@ import { Mdx } from "@/components/mdx/Mdx";
 import { Container } from "@/components/ui/Container";
 import { getAllPosts, getPost, getRelated } from "@/lib/blog";
 import { formatDate, toSummary } from "@/lib/post";
+import { jsonLd, pageMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/ui/JsonLd";
 
 export const dynamicParams = false;
 
@@ -15,7 +17,16 @@ export const generateStaticParams = () => getAllPosts().map(({ slug }) => ({ slu
 
 export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): Promise<Metadata> {
   const post = getPost((await params).slug);
-  return post ? { title: post.title, description: post.description } : {};
+  return post
+    ? pageMetadata({
+        title: post.title,
+        description: post.description,
+        path: `/blog/${post.slug}`,
+        type: "article",
+        publishedTime: post.date,
+        modifiedTime: post.updated ?? post.date,
+      })
+    : {};
 }
 
 export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
@@ -28,16 +39,18 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
   const newer = index > 0 ? toSummary(posts[index - 1]) : null;
   const older = index < posts.length - 1 ? toSummary(posts[index + 1]) : null;
 
+  const crumbs = [
+    { name: "Blog", path: "/blog" },
+    { name: post.title, path: `/blog/${post.slug}` },
+  ];
+
   return (
     <>
+      <JsonLd data={jsonLd.blogPosting(post)} />
+      <JsonLd data={jsonLd.breadcrumbs(crumbs)} />
       <article>
         <Container width="reading" className="pt-10 md:pt-14">
-          <Breadcrumbs
-            items={[
-              { name: "Blog", path: "/blog" },
-              { name: post.title, path: `/blog/${post.slug}` },
-            ]}
-          />
+          <Breadcrumbs items={crumbs} />
           <p className="mt-8 text-small font-semibold text-purple">{post.category}</p>
           <h1 className="mt-3 text-h1">{post.title}</h1>
           <p className="mt-4 text-small text-subtle">

@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { BlogIndex } from "@/components/blog/BlogIndex";
 import { PageHero } from "@/components/layout/PageHero";
 import { Container } from "@/components/ui/Container";
 import { getAllPosts, getCategories } from "@/lib/blog";
 import { toSummary } from "@/lib/post";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Blog",
   description: "Practical guidance for calibration teams, metrology leaders, and quality operations.",
-};
+  path: "/blog",
+});
 
 export default function BlogPage() {
   return (

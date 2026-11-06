@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { LegalPage } from "@/components/layout/LegalPage";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Security",
   description:
     "How metquay.ai protects calibration records: AWS hosting, encryption, tenant isolation, backups, access control, audit trails and 21 CFR Part 11 controls.",
-};
+  path: "/security",
+});
 
 export default function SecurityPage() {
   return <LegalPage slug="security" />;

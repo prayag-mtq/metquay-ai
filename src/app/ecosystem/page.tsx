@@ -1,5 +1,6 @@
 import { Check, Code2, Cpu, Gauge, Landmark } from "lucide-react";
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { IntegrationDirectory } from "@/components/ecosystem/IntegrationDirectory";
@@ -16,11 +17,12 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { site } from "@/config/site";
 import { api, cta, directory, erp, groups, hero, metrology, partners, syncFlow } from "@/content/pages/ecosystem";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Ecosystem & Integrations",
   description:
     "metquay.ai integrates with Odoo, NetSuite, QuickBooks, Dynamics 365, Business Central, Xero, Fluke MET/CAL, MET/CONNECT and metrology.net, plus a REST API and webhooks.",
-};
+  path: "/ecosystem",
+});
 
 const groupIcons = { erp: Landmark, metrology: Gauge, hardware: Cpu, developer: Code2 };
 
