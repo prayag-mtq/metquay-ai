@@ -32,3 +32,28 @@ test("role tabs switch panels", async ({ page }) => {
   await page.getByRole("tab", { name: "Technicians" }).click();
   await expect(page.getByRole("tabpanel")).toContainText("Capture readings anywhere");
 });
+
+test("every platform feature has a label pill and reveals on scroll", async ({ page }) => {
+  await page.goto("/");
+  for (const id of ["dashboard", "worksheet", "certificates"]) {
+    const feature = page.locator(`#${id}`);
+    await expect(feature.locator("[data-pill]")).toHaveCount(1);
+    await expect(feature.locator("[data-reveal]").first()).toBeAttached();
+  }
+});
+
+test("FAQ answers are in the page and expandable", async ({ page }) => {
+  await page.goto("/");
+  const question = page.getByText("Can technicians really work fully offline?");
+  await question.click();
+  await expect(page.getByText(/offline-first PWA/)).toBeVisible();
+});
+
+for (const width of [360, 1280]) {
+  test(`no horizontal overflow at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/");
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    expect(overflow).toBeLessThanOrEqual(0);
+  });
+}

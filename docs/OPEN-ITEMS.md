@@ -18,3 +18,4 @@ Decisions deferred by Prayag (spec §12) and findings from the Framer crawl. Eac
 - Security page: `<title>` was "Terms of Service" and the meta description mentioned "Clario" (template leftover).
 - `mailto:consluting@metquay.com` (typo) in the post "Say goodbye to disconnected systems". Fixed to consulting@.
 - All 97 blog posts had no `<h1>`. The post title is now the H1.
+- Home hero lead now reads "ISO/IEC 17025 compliant calibration management software" (spec §7 keyword placement). Needs Prayag's sign-off.
