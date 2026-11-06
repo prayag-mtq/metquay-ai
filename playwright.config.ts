@@ -8,7 +8,7 @@ export default defineConfig({
   webServer: {
     command: "node scripts/serve-out.mjs",
     url: "http://localhost:4173",
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: false,
   },
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
 });

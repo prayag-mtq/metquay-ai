@@ -1,6 +1,9 @@
 import { createServer } from "node:http";
 import { readFile, stat } from "node:fs/promises";
+import { createRequire } from "node:module";
 import { extname, join, normalize } from "node:path";
+
+const { handler } = createRequire(import.meta.url)("../infra/cloudfront-function.js");
 
 const root = join(process.cwd(), "out");
 const port = Number(process.env.PORT ?? 4173);
@@ -21,21 +24,31 @@ const types = {
   ".pdf": "application/pdf",
 };
 
-const rewrite = (uri) => {
-  if (uri === "/") return "/index.html";
-  if (!extname(uri)) return `${uri}.html`;
-  return uri;
-};
-
 const exists = (path) =>
   stat(path).then(
     (s) => s.isFile(),
     () => false,
   );
 
+const toEvent = (url, host) => ({
+  request: {
+    uri: url.pathname,
+    headers: { host: { value: host } },
+    querystring: Object.fromEntries([...url.searchParams].map(([key, value]) => [key, { value }])),
+  },
+});
+
 createServer(async (req, res) => {
-  const { pathname } = new URL(req.url ?? "/", "http://localhost");
-  const file = join(root, normalize(decodeURIComponent(rewrite(pathname))));
+  const url = new URL(req.url ?? "/", "http://localhost");
+  const result = handler(toEvent(url, process.env.HOST_HEADER ?? "www.metquay.com"));
+
+  if (result.statusCode) {
+    res.writeHead(result.statusCode, { location: result.headers.location.value });
+    res.end();
+    return;
+  }
+
+  const file = join(root, normalize(decodeURIComponent(result.uri)));
   const found = file.startsWith(root) && (await exists(file));
   const target = found ? file : join(root, "404.html");
   res.writeHead(found ? 200 : 404, { "content-type": types[extname(target)] ?? "application/octet-stream" });
