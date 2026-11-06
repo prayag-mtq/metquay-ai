@@ -1,0 +1,20 @@
+# Open items
+
+Decisions deferred by Prayag (spec §12) and findings from the Framer crawl. Each deferred item is a single value in `src/config/site.ts`.
+
+## Deferred decisions
+
+| # | Question | v1 placeholder | Where |
+|---|---|---|---|
+| 1 | Where do contact-form submissions go? | No endpoint: the form opens a prefilled email to consulting@metquay.com | `site.contactEndpoint` |
+| 2 | One brand name and logo? | "metquay.ai" in titles, current nav logo | `site.name` |
+| 3 | Real CTA destinations (trial signup, expert booking)? | `/contact?intent=trial`, `/contact?intent=expert` | `site.ctas` |
+| 4 | Analytics and cookie banner? | None | — |
+
+## Broken links found in the Framer site (fixed in the rebuild)
+
+- Footer (tablet/mobile variants): "Resources", "Blog" and "Contact" linked to `/company`. They now link to `/resources`, `/blog`, `/contact`.
+- Home blog teaser: the 4th card's "Read More" linked to `/contact#contact`. It now links to its post.
+- Security page: `<title>` was "Terms of Service" and the meta description mentioned "Clario" (template leftover).
+- `mailto:consluting@metquay.com` (typo) in the post "Say goodbye to disconnected systems". Fixed to consulting@.
+- All 97 blog posts had no `<h1>`. The post title is now the H1.
