@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { cn } from "@/lib/cn";
+import { FilterChips } from "@/components/ui/FilterChips";
 import { useHasMounted } from "@/lib/use-has-mounted";
 import type { PostSummary } from "@/lib/post";
 import { PostCard } from "./PostCard";
@@ -33,24 +33,7 @@ export function BlogIndex({ posts, categories }: { posts: PostSummary[]; categor
 
   return (
     <>
-      <div role="group" aria-label="Filter by category" className="flex flex-wrap gap-2">
-        {[ALL, ...categories].map((item) => (
-          <button
-            key={item}
-            type="button"
-            aria-pressed={active === item}
-            onClick={() => choose(item)}
-            className={cn(
-              "h-9 rounded-full border px-4 text-small font-semibold transition-colors",
-              active === item
-                ? "border-purple bg-purple-deep text-text"
-                : "border-border-strong text-muted hover:border-text hover:text-text",
-            )}
-          >
-            {item}
-          </button>
-        ))}
-      </div>
+      <FilterChips label="Filter by category" options={[ALL, ...categories]} value={active} onChange={choose} />
       <p className="sr-only" aria-live="polite">
         {filtered.length} posts
       </p>

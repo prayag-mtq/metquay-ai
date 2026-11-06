@@ -22,3 +22,6 @@ Decisions deferred by Prayag (spec §12) and findings from the Framer crawl. Eac
 - Blog category typo "Efficient Approches" corrected to "Efficient Approaches".
 - Legacy links inside posts: `/faq` → `/contact#faq`, `/metconnect/` → `/ecosystem#fluke`, `/blog/hashtags/*` unlinked (pages don't exist).
 - All old blog banner images (AI-generated art) dropped; every post uses the generated cover until real app screenshots are supplied (#9).
+- Solutions step 04 copy typo "I real expression engine" fixed to "A real expression engine".
+- Resources: the 7 playbook "Download Free" buttons had no target on the live site and the crawl has no playbook PDFs. Each is now "Request this playbook" → contact form (topic preselected). Supply the PDFs to switch these to direct downloads.
+- Ecosystem: "Read the API docs" had no target on the live site. Pointed at the contact form (expert) until a docs URL exists.
