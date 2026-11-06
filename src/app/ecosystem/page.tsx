@@ -122,6 +122,9 @@ export default function EcosystemPage() {
             ))}
           </ul>
         </div>
+        <Button href={partners.docs.href} variant="secondary" size="sm" className="mt-6">
+          {partners.docs.label}
+        </Button>
       </Split>
 
       <Section labelledBy="sync-title" className="border-t border-border">
