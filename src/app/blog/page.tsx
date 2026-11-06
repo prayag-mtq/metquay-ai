@@ -20,7 +20,7 @@ export default function BlogPage() {
         title="Insights, guides & updates — all in one place."
         lead="Practical guidance for calibration teams, metrology leaders, and quality operations."
       />
-      <Container className="pb-24">
+      <Container className="pb-16">
         <BlogIndex posts={getAllPosts().map(toSummary)} categories={getCategories()} />
       </Container>
     </>

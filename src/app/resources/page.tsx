@@ -168,7 +168,7 @@ export default function ResourcesPage() {
         </Container>
       </Section>
 
-      <section aria-labelledby="consult-title" className="pb-24">
+      <section aria-labelledby="consult-title" className="pb-16">
         <Container>
           <div className="rounded-3xl border border-border bg-card px-6 py-14 text-center md:px-16">
             <h2 id="consult-title" className="text-h2">

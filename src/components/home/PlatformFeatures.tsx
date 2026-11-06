@@ -13,7 +13,7 @@ export function PlatformFeatures() {
     <Section id="platform" labelledBy="platform-title" className="border-t border-border">
       <Container>
         <SectionHeader id="platform-title" eyebrow={platform.eyebrow} title={platform.title} />
-        <div className="mt-16 space-y-24 md:mt-20 md:space-y-32">
+        <div className="mt-12 space-y-16 md:mt-14 md:space-y-20">
           {platform.features.map((feature, index) => (
             <article
               key={feature.id}

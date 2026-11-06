@@ -5,7 +5,7 @@ type SectionProps = { id?: string; className?: string; labelledBy?: string; chil
 
 export function Section({ id, className, labelledBy, children }: SectionProps) {
   return (
-    <section id={id} aria-labelledby={labelledBy} className={cn("py-20 md:py-28", className)}>
+    <section id={id} aria-labelledby={labelledBy} className={cn("py-14 md:py-20", className)}>
       {children}
     </section>
   );

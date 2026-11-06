@@ -10,7 +10,7 @@ export function Testimonials() {
       <Container>
         <SectionHeader id="testimonials-title" eyebrow={testimonials.eyebrow} title={testimonials.title} />
       </Container>
-      <Carousel label="Customer testimonials" className="mt-14">
+      <Carousel label="Customer testimonials" className="mt-10">
         {testimonials.items.map((item) => (
           <figure key={item.name} className="flex h-full flex-col rounded-2xl border border-border bg-card p-7">
             <blockquote className="flex-1 text-body text-muted">“{item.quote}”</blockquote>

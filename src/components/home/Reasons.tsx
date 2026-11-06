@@ -10,7 +10,7 @@ export function Reasons() {
     <Section id="why" labelledBy="why-title" className="bg-surface">
       <Container>
         <SectionHeader id="why-title" eyebrow={reasons.eyebrow} title={reasons.title} />
-        <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {reasons.items.map((item, index) => {
             const Icon = reasonIcons[item.icon];
             return (

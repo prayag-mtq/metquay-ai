@@ -6,7 +6,7 @@ type PageHeroProps = { eyebrow?: string; title: ReactNode; lead?: ReactNode; chi
 
 export function PageHero({ eyebrow, title, lead, children }: PageHeroProps) {
   return (
-    <Container className="pt-16 pb-12 text-center md:pt-24 md:pb-16">
+    <Container className="pt-12 pb-10 text-center md:pt-16 md:pb-12">
       {eyebrow && <Pill>{eyebrow}</Pill>}
       <h1 className="mx-auto mt-5 max-w-4xl text-h1">{title}</h1>
       {lead && <p className="mx-auto mt-5 max-w-2xl text-body-lg text-muted">{lead}</p>}

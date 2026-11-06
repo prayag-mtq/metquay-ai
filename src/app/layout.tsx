@@ -39,7 +39,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </a>
         <MotionProvider>
           <Header />
-          <main id="main">{children}</main>
+          <main id="main" className="relative isolate">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[560px] bg-[radial-gradient(ellipse_60%_60%_at_50%_0%,rgba(123,104,238,0.2),transparent_70%)]"
+            />
+            {children}
+          </main>
           <Footer />
         </MotionProvider>
       </body>

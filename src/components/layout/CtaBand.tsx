@@ -7,9 +7,9 @@ type CtaBandProps = { title?: string; body?: string };
 
 export function CtaBand({ title = ctaBand.title, body = ctaBand.body }: CtaBandProps) {
   return (
-    <section aria-labelledby="cta-title" className="py-20 md:py-28">
+    <section aria-labelledby="cta-title" className="py-14 md:py-20">
       <Container>
-        <div className="relative overflow-hidden rounded-3xl border border-border bg-card px-6 py-16 text-center md:px-16">
+        <div className="relative overflow-hidden rounded-3xl border border-border bg-card px-6 py-12 text-center md:py-14 md:px-16">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_80%_at_50%_120%,rgba(140,255,46,0.14),transparent_70%)]"
