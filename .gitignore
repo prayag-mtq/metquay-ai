@@ -48,3 +48,6 @@ next-env.d.ts
 
 /public/llms.txt
 /public/llms-full.txt
+
+.vercel
+.env*
