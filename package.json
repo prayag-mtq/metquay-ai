@@ -2,6 +2,7 @@
   "name": "metquay-web",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -12,6 +13,7 @@
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
+    "lucide-react": "^1.70.0",
     "motion": "^14.10.0",
     "next": "16.4.5",
     "next-mdx-remote": "^6.0.0",
