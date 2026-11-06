@@ -1,5 +1,46 @@
 {
-  "home/dashboard.webp": { "id": "37i6b0ZfI2erirkvZOiyQD4V5mg", "width": 2000 },
-  "home/worksheet.webp": { "id": "xea8MkFTMHwDjj6vojgUc7OWBcE", "width": 1600 },
-  "home/certificate.webp": { "id": "Si8feUxN6BHzQVrn9ZYeTNRdCpE", "width": 1600 }
+  "home/dashboard.webp": {
+    "id": "37i6b0ZfI2erirkvZOiyQD4V5mg",
+    "width": 2000
+  },
+  "home/worksheet.webp": {
+    "id": "xea8MkFTMHwDjj6vojgUc7OWBcE",
+    "width": 1600
+  },
+  "home/certificate.webp": {
+    "id": "Si8feUxN6BHzQVrn9ZYeTNRdCpE",
+    "width": 1600
+  },
+  "solutions/step-01.webp": {
+    "id": "Uz2rMsHwH0hb2NeU9Ki9gtssQ",
+    "width": 1600
+  },
+  "solutions/step-02.webp": {
+    "id": "osHnq7gyCnFOsJtGdEqgqAU",
+    "width": 1600
+  },
+  "solutions/step-03.webp": {
+    "id": "QDT1MPCgBoijBSWcdFtMYeEV8",
+    "width": 1600
+  },
+  "solutions/step-04.webp": {
+    "id": "8pCKnJRvU4GFoNGRwAYYFufjkc",
+    "width": 1600
+  },
+  "solutions/step-05.webp": {
+    "id": "qGHGYRz5rRis7ib0fBOLfAez4w",
+    "width": 1600
+  },
+  "solutions/step-06.webp": {
+    "id": "TpXNAMwrxxUkvGpoIy4RLvWsZEE",
+    "width": 1600
+  },
+  "solutions/step-07.webp": {
+    "id": "L2M8bOe1zOe9IgQaGsIPbOzyGx0",
+    "width": 1600
+  },
+  "solutions/step-08.webp": {
+    "id": "8N2sP1DK9ARkNO7Oik09m7lDqSc",
+    "width": 1600
+  }
 }
