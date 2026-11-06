@@ -27,7 +27,11 @@ const rewrite = (uri) => {
   return uri;
 };
 
-const exists = (path) => stat(path).then((s) => s.isFile(), () => false);
+const exists = (path) =>
+  stat(path).then(
+    (s) => s.isFile(),
+    () => false,
+  );
 
 createServer(async (req, res) => {
   const { pathname } = new URL(req.url ?? "/", "http://localhost");

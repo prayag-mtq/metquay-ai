@@ -17,7 +17,10 @@ const variants: Record<Variant, string> = {
 };
 
 type Style = { size?: Size; variant?: Variant; className?: string };
-type LinkProps = Style & { href: string; children: ReactNode } & Omit<ComponentProps<typeof Link>, "href" | "className">;
+type LinkProps = Style & { href: string; children: ReactNode } & Omit<
+    ComponentProps<typeof Link>,
+    "href" | "className"
+  >;
 type NativeProps = Style & { href?: undefined; children: ReactNode } & Omit<ComponentProps<"button">, "className">;
 
 export const buttonClass = ({ size = "md", variant = "primary", className }: Style) =>

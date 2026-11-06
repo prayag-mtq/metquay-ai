@@ -1,7 +1,18 @@
 import { describe, expect, it } from "vitest";
 import { site } from "@/config/site";
 
-const routes = ["/", "/solutions", "/ecosystem", "/resources", "/company", "/contact", "/security", "/privacy", "/terms", "/blog"];
+const routes = [
+  "/",
+  "/solutions",
+  "/ecosystem",
+  "/resources",
+  "/company",
+  "/contact",
+  "/security",
+  "/privacy",
+  "/terms",
+  "/blog",
+];
 const pathOf = (href: string) => href.split(/[?#]/)[0] || "/";
 const footerLinks = site.footer.flatMap((col) => col.links);
 
