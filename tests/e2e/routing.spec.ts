@@ -28,3 +28,23 @@ test("browsing triggers no failed requests, including router prefetches", async 
   }
   expect(failed).toEqual([]);
 });
+
+test("responsive images serve right-sized files that exist", async ({ page, request }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto("/");
+  const dashboard = page.locator("#dashboard img");
+  await dashboard.scrollIntoViewIfNeeded();
+  await expect(dashboard).toHaveJSProperty("complete", true);
+  const current = await dashboard.evaluate((img: HTMLImageElement) => img.currentSrc);
+  expect(current).toMatch(/dashboard\.w(640|960|1280)\.webp$/);
+
+  const candidates = await page.$$eval("img[srcset]", (imgs) =>
+    imgs.flatMap((img) =>
+      img
+        .getAttribute("srcset")!
+        .split(",")
+        .map((part) => part.trim().split(" ")[0]),
+    ),
+  );
+  for (const src of new Set(candidates)) expect((await request.get(src)).status(), src).toBe(200);
+});
