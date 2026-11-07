@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { useId, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
 import { cn } from "@/lib/cn";
 import { presets } from "@/lib/motion";
@@ -68,7 +68,7 @@ export function Tabs({ label, items, className }: TabsProps) {
       {items.map((item, index) => {
         const active = index === selected;
         return (
-          <motion.div
+          <m.div
             key={active ? `${item.id}-active` : item.id}
             role="tabpanel"
             id={`${baseId}-panel-${item.id}`}
@@ -81,7 +81,7 @@ export function Tabs({ label, items, className }: TabsProps) {
             className="mt-10 focus-visible:outline-offset-8"
           >
             {item.panel}
-          </motion.div>
+          </m.div>
         );
       })}
     </div>

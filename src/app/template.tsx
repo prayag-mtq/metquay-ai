@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { useEffect, useState } from "react";
 import { presets } from "@/lib/motion";
 
@@ -14,8 +14,8 @@ export default function Template({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <motion.div initial={animate ? "initial" : false} animate="animate" variants={presets.pageEnter}>
+    <m.div initial={animate ? "initial" : false} animate="animate" variants={presets.pageEnter}>
       {children}
-    </motion.div>
+    </m.div>
   );
 }

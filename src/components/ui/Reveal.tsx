@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView, useReducedMotion } from "motion/react";
+import { m, useInView, useReducedMotion } from "motion/react";
 import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { presets, STAGGER_STEP } from "@/lib/motion";
 
@@ -22,7 +22,7 @@ export function Reveal({ children, index = 0, className }: RevealProps) {
   }, [reduce]);
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       data-reveal=""
       className={className}
@@ -32,6 +32,6 @@ export function Reveal({ children, index = 0, className }: RevealProps) {
       transition={{ delay: index * STAGGER_STEP }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
