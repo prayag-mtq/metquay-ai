@@ -17,7 +17,16 @@ export const metadata: Metadata = {
   applicationName: site.name,
   openGraph: { siteName: site.name, locale: "en_US", images: [OG_IMAGE] },
   twitter: { card: "summary_large_image" },
-  alternates: { types: { "text/plain": [{ url: "/llms.txt", title: "llms.txt" }] } },
+  alternates: {
+    types: {
+      "text/plain": [{ url: "/llms.txt", title: "llms.txt" }],
+      "application/rss+xml": [{ url: "/blog/feed.xml", title: `${site.name} blog` }],
+    },
+  },
+  verification: {
+    google: site.verification.google,
+    other: site.verification.bing ? { "msvalidate.01": site.verification.bing } : undefined,
+  },
 };
 
 export const viewport: Viewport = {

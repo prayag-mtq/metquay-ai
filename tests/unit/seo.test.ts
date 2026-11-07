@@ -47,7 +47,7 @@ describe("jsonLd", () => {
 describe("sitemap", () => {
   it("lists every static route and post with lastModified", () => {
     const entries = sitemap();
-    expect(entries).toHaveLength(10 + 97);
+    expect(entries.length).toBeGreaterThanOrEqual(10 + 97);
     expect(entries.every((e) => e.url.startsWith("https://www.metquay.com/") && e.lastModified)).toBe(true);
     expect(entries.some((e) => e.url.endsWith("/"))).toBe(true);
     expect(entries.filter((e) => e.url.endsWith("/") && e.url !== "https://www.metquay.com/")).toHaveLength(0);

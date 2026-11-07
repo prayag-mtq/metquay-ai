@@ -6,6 +6,7 @@ export const OG_IMAGE = { url: "/og/default.png", width: 1200, height: 630, alt:
 
 type PageMeta = {
   title: string;
+  image?: string;
   description: string;
   path: string;
   type?: "website" | "article";
@@ -20,8 +21,10 @@ export function pageMetadata({
   path,
   type = "website",
   absoluteTitle,
+  image,
   ...times
 }: PageMeta): Metadata {
+  const images = image ? [{ url: image, width: 1200, height: 630, alt: title }] : [OG_IMAGE];
   const url = absoluteUrl(path);
   const fullTitle = absoluteTitle ? title : `${title} | ${site.name}`;
   return {
@@ -34,10 +37,10 @@ export function pageMetadata({
       title: fullTitle,
       description,
       siteName: site.name,
-      images: [OG_IMAGE],
+      images,
       ...(type === "article" && times),
     },
-    twitter: { card: "summary_large_image", title: fullTitle, description, images: [OG_IMAGE.url] },
+    twitter: { card: "summary_large_image", title: fullTitle, description, images: [images[0].url] },
   };
 }
 
@@ -98,6 +101,42 @@ export const jsonLd = {
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD", description: "Free trial" },
   }),
 
+  webPage: ({
+    title,
+    description,
+    path,
+    updated,
+  }: {
+    title: string;
+    description: string;
+    path: string;
+    updated: string;
+  }) => ({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: title,
+    description,
+    url: absoluteUrl(path),
+    dateModified: updated,
+    isPartOf: { "@type": "WebSite", url: absoluteUrl("/") },
+    about: { "@type": "Thing", name: "Calibration management software" },
+    publisher: { "@id": organizationId },
+  }),
+
+  definedTermSet: (terms: { id: string; term: string; definition: string }[]) => ({
+    "@context": "https://schema.org",
+    "@type": "DefinedTermSet",
+    name: "Calibration and metrology glossary",
+    url: absoluteUrl("/glossary"),
+    hasDefinedTerm: terms.map((t) => ({
+      "@type": "DefinedTerm",
+      "@id": absoluteUrl(`/glossary#${t.id}`),
+      name: t.term,
+      description: t.definition,
+      url: absoluteUrl(`/glossary#${t.id}`),
+    })),
+  }),
+
   breadcrumbs: (items: { name: string; path: string }[]) => ({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -109,7 +148,7 @@ export const jsonLd = {
     })),
   }),
 
-  blogPosting: (post: Post) => ({
+  blogPosting: (post: Post, image = absoluteUrl(OG_IMAGE.url)) => ({
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
@@ -119,7 +158,7 @@ export const jsonLd = {
     articleSection: post.category,
     url: absoluteUrl(`/blog/${post.slug}`),
     mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
-    image: absoluteUrl(OG_IMAGE.url),
+    image,
     author: { "@id": organizationId },
     publisher: { "@id": organizationId },
   }),

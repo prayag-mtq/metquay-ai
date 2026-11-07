@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PostCard } from "@/components/blog/PostCard";
 import { PostNav } from "@/components/blog/PostNav";
@@ -6,7 +7,9 @@ import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { CtaBand } from "@/components/layout/CtaBand";
 import { Mdx } from "@/components/mdx/Mdx";
 import { Container } from "@/components/ui/Container";
+import { absoluteUrl } from "@/config/site";
 import { getAllPosts, getPost, getRelated } from "@/lib/blog";
+import { categorySlug } from "@/lib/categories";
 import { formatDate, toSummary } from "@/lib/post";
 import { jsonLd, pageMetadata } from "@/lib/seo";
 import { JsonLd } from "@/components/ui/JsonLd";
@@ -23,6 +26,7 @@ export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): P
         description: post.description,
         path: `/blog/${post.slug}`,
         type: "article",
+        image: `/og/blog/${post.slug}.png`,
         publishedTime: post.date,
         modifiedTime: post.updated ?? post.date,
       })
@@ -46,12 +50,17 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
 
   return (
     <>
-      <JsonLd data={jsonLd.blogPosting(post)} />
+      <JsonLd data={jsonLd.blogPosting(post, absoluteUrl(`/og/blog/${post.slug}.png`))} />
       <JsonLd data={jsonLd.breadcrumbs(crumbs)} />
       <article>
         <Container width="reading" className="pt-10 md:pt-14">
           <Breadcrumbs items={crumbs} />
-          <p className="mt-8 text-small font-semibold text-purple">{post.category}</p>
+          <Link
+            href={`/blog/category/${categorySlug(post.category)}`}
+            className="mt-8 inline-block text-small font-semibold text-purple hover:underline"
+          >
+            {post.category}
+          </Link>
           <h1 className="mt-3 text-h1">{post.title}</h1>
           <p className="mt-4 text-small text-subtle">
             <time dateTime={post.date}>{formatDate(post.date)}</time> · {post.readingMinutes} min read

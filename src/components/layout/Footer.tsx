@@ -33,7 +33,7 @@ export function Footer() {
             ))}
           </ul>
         </div>
-        <nav aria-label="Footer" className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+        <nav aria-label="Footer" className="grid grid-cols-2 gap-8 sm:grid-cols-3 xl:grid-cols-5">
           {site.footer.map((column) => (
             <div key={column.heading}>
               <h2 className="mb-4 text-xs font-semibold tracking-wide text-muted uppercase">{column.heading}</h2>

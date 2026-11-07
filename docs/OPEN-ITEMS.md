@@ -29,3 +29,14 @@ Decisions deferred by Prayag (spec §12) and findings from the Framer crawl. Eac
 - Legal tables (Privacy: data categories, purposes, subprocessors; Security: controls, compliance) were Framer link-grids. Rebuilt as real tables. Repeated cells the crawl collapsed were restored by row position: two "Legitimate interests" rows, subprocessor locations "US", ISO/IEC 27001 "Planned". Please verify.
 - Company: Seby George has no photo on the live site (initials shown).
 - Per-post Open Graph images deferred: every page shares public/og/default.png.
+
+## SEO: actions outside the code
+
+The site now has keyword landing pages, a glossary, category hubs, an RSS feed, per-post OG images, complete structured data, `llms.txt` and a sitemap. Rankings also depend on things code can't do:
+
+1. **Search Console + Bing**: set `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` and `NEXT_PUBLIC_BING_SITE_VERIFICATION` in Vercel, redeploy, verify, submit `/sitemap.xml`, and request removal of `/hi` URLs.
+2. **Domain**: point `www.metquay.com` at the new deployment. Rankings follow the canonical domain, so nothing ranks from `*.vercel.app`.
+3. **Backlinks and mentions**: listings on G2, Capterra, Software Advice and GetApp (category "Calibration Management Software"), NCSLI / A2LA / ANAB partner directories, Odoo Apps, and the Fluke/metrology.net partner pages. LLMs recommend products they see cited on third-party sites.
+4. **Brand name**: pick one ("metquay.ai" vs "Metquay"). Inconsistent naming splits entity signals (deferred item 2).
+5. **Fresh content**: publish regularly (the blog's last posts drive "freshness"), and update the guide pages' `updated` date when content changes.
+6. **Review the new copy**: `src/content/landing.ts` and `src/content/glossary.ts` were written from facts already on the site plus standard metrology definitions. Have a domain expert check them before launch.

@@ -18,6 +18,10 @@ export const site = {
     country: "US",
   },
   contactEndpoint: null as string | null,
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    bing: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION,
+  },
   meetingUrl: "https://meetings-na2.hubspot.com/sandeep-nair/metquay-presentation",
   ctas: {
     trial: { label: "Start Free Trial", href: "/contact?intent=trial" },
@@ -64,6 +68,16 @@ export const site = {
         { label: "Fluke MET/CAL", href: "/ecosystem#fluke" },
         { label: "metrology.net", href: "/ecosystem#fluke" },
         { label: "API & Webhooks", href: "/ecosystem#api" },
+      ],
+    },
+    {
+      heading: "Guides",
+      links: [
+        { label: "Calibration management software", href: "/calibration-management-software" },
+        { label: "ISO 17025 software", href: "/iso-17025-calibration-software" },
+        { label: "21 CFR Part 11", href: "/21-cfr-part-11-calibration-software" },
+        { label: "Migration", href: "/calibration-software-migration" },
+        { label: "Glossary", href: "/glossary" },
       ],
     },
     {

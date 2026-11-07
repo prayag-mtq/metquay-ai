@@ -1,7 +1,6 @@
 import matter from "gray-matter";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { cache } from "react";
 import type { Post } from "./post";
 
 const BLOG_DIR = join(process.cwd(), "content/blog");
@@ -25,12 +24,13 @@ function readPost(file: string): Post {
   };
 }
 
-export const getAllPosts = cache((): Post[] =>
-  readdirSync(BLOG_DIR)
+let posts: Post[] | undefined;
+
+export const getAllPosts = (): Post[] =>
+  (posts ??= readdirSync(BLOG_DIR)
     .filter((file) => file.endsWith(".mdx"))
     .map(readPost)
-    .sort((a, b) => b.date.localeCompare(a.date)),
-);
+    .sort((a, b) => b.date.localeCompare(a.date)));
 
 export const getPost = (slug: string) => getAllPosts().find((post) => post.slug === slug) ?? null;
 

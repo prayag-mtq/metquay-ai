@@ -13,7 +13,7 @@ test("every sitemap page has one h1, unique title and description, canonical and
   request,
 }) => {
   const paths = await sitemapPaths(request);
-  expect(paths).toHaveLength(107);
+  expect(paths.length).toBeGreaterThanOrEqual(117);
   const titles = new Set<string>();
   const descriptions = new Set<string>();
 

@@ -8,6 +8,8 @@ import * as ecosystem from "../src/content/pages/ecosystem";
 import * as home from "../src/content/pages/home";
 import * as resources from "../src/content/pages/resources";
 import * as solutions from "../src/content/pages/solutions";
+import { glossary } from "../src/content/glossary";
+import { landingPages } from "../src/content/landing";
 import { getAllPosts } from "../src/lib/blog";
 
 const link = (title: string, path: string, note?: string) =>
@@ -28,6 +30,15 @@ export function buildLlmsTxt() {
       "- Compliance: ISO/IEC 17025:2017, FDA 21 CFR Part 11, EU Annex 11, GAMP 5",
       "- Deployment: cloud on AWS (US, EU, Asia-Pacific regions), offline-first PWA for technicians",
       `- Contact: ${site.contactEmail}, ${site.phone}`,
+    ].join("\n"),
+    [
+      "## Guides",
+      ...landingPages.map((p) => link(p.title, `/${p.slug}`, p.summary)),
+      link(
+        "Calibration & metrology glossary",
+        "/glossary",
+        "Definitions of TUR, uncertainty, traceability, coverage factor and more",
+      ),
     ].join("\n"),
     [
       "## Product",
@@ -85,6 +96,18 @@ export function buildLlmsFull() {
       `## ${home.faq.title}`,
       ...home.faq.items.map((f) => `### ${f.q}\n${f.a}`),
     ]),
+    ...landingPages.map((p) =>
+      section(p.title, `/${p.slug}`, [
+        p.summary,
+        ...p.sections.map((s) => `## ${s.heading}\n${s.body.join("\n\n")}${s.points ? `\n${bullets(s.points)}` : ""}`),
+        ...p.faq.map((f) => `### ${f.q}\n${f.a}`),
+      ]),
+    ),
+    section(
+      "Calibration & metrology glossary",
+      "/glossary",
+      glossary.map((t) => `## ${t.term}\n${t.definition}`),
+    ),
     section(solutions.hero.title, "/solutions", [
       solutions.hero.lead,
       ...solutions.steps.map((s) => `## ${s.label}: ${s.title}\n${s.body}\n${bullets(s.points)}`),

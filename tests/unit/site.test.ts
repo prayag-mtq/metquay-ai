@@ -12,6 +12,11 @@ const routes = [
   "/privacy",
   "/terms",
   "/blog",
+  "/glossary",
+  "/calibration-management-software",
+  "/iso-17025-calibration-software",
+  "/21-cfr-part-11-calibration-software",
+  "/calibration-software-migration",
 ];
 const pathOf = (href: string) => href.split(/[?#]/)[0] || "/";
 const footerLinks = site.footer.flatMap((col) => col.links);

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "prebuild": "tsx scripts/gen-llms.ts",
+    "prebuild": "tsx scripts/gen-llms.ts && tsx scripts/gen-og.ts",
     "build": "next build",
     "lint": "eslint",
     "test": "vitest run",
