@@ -1,5 +1,4 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { Carousel } from "@/components/ui/Carousel";
@@ -18,16 +17,16 @@ describe("Carousel", () => {
     expect(region).toHaveAttribute("data-paused", "false");
   });
 
-  it("has a pause button for keyboard and touch users", async () => {
-    const user = userEvent.setup();
+  it("pauses for keyboard and touch users without extra controls", () => {
     render(<Carousel label="Testimonials">{slides}</Carousel>);
     const region = screen.getByRole("region", { name: "Testimonials" });
-    await user.click(screen.getByRole("button", { name: "Pause testimonials" }));
+    expect(screen.queryByRole("button")).toBeNull();
+    expect(region).toHaveAttribute("tabindex", "0");
+    fireEvent.focus(region);
     expect(region).toHaveAttribute("data-paused", "true");
-    fireEvent.mouseLeave(region);
+    fireEvent.blur(region);
+    fireEvent.pointerDown(region);
     expect(region).toHaveAttribute("data-paused", "true");
-    await user.click(screen.getByRole("button", { name: "Play testimonials" }));
-    expect(screen.getByRole("button", { name: "Pause testimonials" })).toBeInTheDocument();
   });
 
   it("hides the duplicated track from assistive tech and under reduced motion", () => {

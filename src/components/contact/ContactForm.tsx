@@ -88,7 +88,7 @@ export function ContactForm({ endpoint, defaultIntent = "general", defaultMessag
   if (status.kind === "sent") {
     return (
       <p role="status" className="rounded-2xl border border-lime/40 bg-lime-deep/40 p-6 text-body text-text">
-        Thanks — your message is with our team. We reply within one business day.
+        Thanks — your message is with our team.
       </p>
     );
   }
@@ -163,12 +163,9 @@ export function ContactForm({ endpoint, defaultIntent = "general", defaultMessag
         <label htmlFor={`${id}-hp`}>Company website</label>
         <input id={`${id}-hp`} name="company_website" tabIndex={-1} autoComplete="off" />
       </div>
-      <div className="flex flex-wrap items-center gap-4">
-        <Button type="submit" disabled={status.kind === "sending"}>
-          {status.kind === "sending" ? "Sending…" : "Send message"}
-        </Button>
-        <p className="text-small text-subtle">We reply within one business day.</p>
-      </div>
+      <Button type="submit" disabled={status.kind === "sending"}>
+        {status.kind === "sending" ? "Sending…" : "Send message"}
+      </Button>
       {status.kind === "mail" && (
         <p role="status" className="rounded-xl border border-border bg-card p-4 text-small text-muted">
           Your message is ready. Send it from your email app to{" "}

@@ -22,7 +22,7 @@ const { street, city, region, postalCode } = site.address;
 const details = [
   { icon: Mail, label: site.contactEmail, href: `mailto:${site.contactEmail}` },
   { icon: Phone, label: site.phone, href: `tel:${site.phone.replace(/\s/g, "")}` },
-  { icon: CalendarDays, label: "Book a 30-minute demo", href: site.meetingUrl, external: true },
+  { icon: CalendarDays, label: "Book a demo", href: site.meetingUrl, external: true },
   { icon: MapPin, label: `${street}, ${city}, ${region} ${postalCode}` },
 ];
 

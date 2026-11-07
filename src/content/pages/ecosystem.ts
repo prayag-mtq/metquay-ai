@@ -139,7 +139,6 @@ export const partners = {
     { value: "Co-marketing", label: "listing & launch support" },
   ],
   cta: { label: "Become a Partner", href: "/contact?intent=partner" },
-  docs: { label: "Read the API docs", href: "/contact?intent=expert" },
 };
 
 export const cta = {

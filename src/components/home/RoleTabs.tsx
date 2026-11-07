@@ -1,5 +1,4 @@
 import { Check } from "lucide-react";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -19,9 +18,6 @@ export function RoleTabs() {
           <div>
             <p className="text-small font-semibold text-purple">{role.label}</p>
             <h3 className="mt-2 text-h3">{role.headline}</h3>
-            <Button href="/solutions" variant="secondary" size="sm" className="mt-6">
-              See the workflow
-            </Button>
           </div>
           <ul className="space-y-4">
             {role.points.map((point) => (
