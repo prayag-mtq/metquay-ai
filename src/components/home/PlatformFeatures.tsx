@@ -19,7 +19,7 @@ export function PlatformFeatures() {
               key={feature.id}
               id={feature.id}
               aria-labelledby={`${feature.id}-title`}
-              className="scroll-mt-24 grid items-center gap-10 lg:grid-cols-[5fr_7fr] lg:gap-16"
+              className="grid items-center gap-10 lg:grid-cols-[5fr_7fr] lg:gap-16"
             >
               <Reveal className={cn(index % 2 === 1 && "lg:order-2")}>
                 <Pill>{feature.label}</Pill>

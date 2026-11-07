@@ -48,7 +48,7 @@ export default function GlossaryPage() {
           {glossary.map((t) => {
             const link = termLink(t);
             return (
-              <div key={t.id} id={t.id} className="scroll-mt-24 py-6">
+              <div key={t.id} id={t.id} className="py-6">
                 <dt className="text-h4 font-semibold">{t.term}</dt>
                 <dd className="mt-2 text-body text-muted">
                   {t.definition}

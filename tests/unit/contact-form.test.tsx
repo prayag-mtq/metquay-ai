@@ -79,3 +79,13 @@ describe("ContactForm", () => {
     expect(screen.getByLabelText("Topic")).toHaveValue("playbook");
   });
 });
+
+describe("isIntent", () => {
+  it("accepts only real topics, not inherited object keys", async () => {
+    const { isIntent } = await import("@/components/contact/ContactForm");
+    expect(isIntent("trial")).toBe(true);
+    expect(isIntent("constructor")).toBe(false);
+    expect(isIntent("toString")).toBe(false);
+    expect(isIntent(null)).toBe(false);
+  });
+});

@@ -6,6 +6,7 @@ export const site = {
   legalName: "Metquay Inc.",
   url: "https://www.metquay.com",
   tagline: "Calibration operations platform",
+  contentUpdated: "2026-11-07",
   description:
     "Asset-centric calibration management software for ISO/IEC 17025 labs. Manage the complete process from customer portal to shipping, with offline workflows and AI built in.",
   contactEmail: "consulting@metquay.com",

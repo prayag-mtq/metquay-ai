@@ -28,7 +28,6 @@ Decisions deferred by Prayag (spec §12) and findings from the Framer crawl. Eac
 - Legal pages contain drafting placeholders copied from the live site, which need legal review: Privacy "[e.g., Google Analytics / HubSpot]", "[metquay.ai/subprocessors]", "[confirm vendor terms and retention]"; Security "[a validation package / IQ-OQ documentation]"; Terms "[30]".
 - Legal tables (Privacy: data categories, purposes, subprocessors; Security: controls, compliance) were Framer link-grids. Rebuilt as real tables. Repeated cells the crawl collapsed were restored by row position: two "Legitimate interests" rows, subprocessor locations "US", ISO/IEC 27001 "Planned". Please verify.
 - Company: Seby George has no photo on the live site (initials shown).
-- Per-post Open Graph images deferred: every page shares public/og/default.png.
 
 ## SEO: actions outside the code
 

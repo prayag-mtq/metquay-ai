@@ -18,3 +18,13 @@ test("unknown URLs return the 404 page with a 404 status", async ({ request }) =
   expect(res.status()).toBe(404);
   expect(await res.text()).toContain("Page not found");
 });
+
+test("browsing triggers no failed requests, including router prefetches", async ({ page }) => {
+  const failed: string[] = [];
+  page.on("response", (res) => res.status() >= 400 && failed.push(`${res.status()} ${res.url()}`));
+  for (const path of ["/", "/blog", "/blog/introduction-to-gage-r-r"]) {
+    await page.goto(path, { waitUntil: "networkidle" });
+    await page.waitForTimeout(500);
+  }
+  expect(failed).toEqual([]);
+});

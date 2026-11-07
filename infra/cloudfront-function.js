@@ -21,24 +21,37 @@ function queryString(querystring) {
   return parts.length ? "?" + parts.join("&") : "";
 }
 
+function segmentPrefetchPath(uri) {
+  var slash = uri.lastIndexOf("/");
+  var name = uri.slice(slash + 1);
+  if (name.indexOf("__next.") !== 0 || name.slice(-4) !== ".txt") return null;
+  var parts = name.slice(0, -4).split(".");
+  if (parts.length < 3) return null;
+  return uri.slice(0, slash + 1) + "__next." + parts.slice(1).join("/") + ".txt";
+}
+
 function handler(event) {
   var request = event.request;
   var uri = request.uri;
   var host = request.headers.host ? request.headers.host.value : CANONICAL_HOST;
+  var query = queryString(request.querystring);
 
   if (host === "metquay.com") {
-    return redirect("https://" + CANONICAL_HOST + uri + queryString(request.querystring));
+    return redirect("https://" + CANONICAL_HOST + uri + query);
   }
   if (uri === "/hi" || uri.indexOf("/hi/") === 0) {
-    return redirect(uri.slice(3) || "/");
+    return redirect((uri.slice(3) || "/") + query);
   }
   if (uri.indexOf("/post/") === 0) {
-    return redirect("/blog/" + uri.slice(6));
+    return redirect("/blog/" + uri.slice(6) + query);
   }
   if (uri.length > 1 && uri.charAt(uri.length - 1) === "/") {
-    return redirect(uri.replace(/\/+$/, ""));
+    return redirect(uri.replace(/\/+$/, "") + query);
   }
-  if (uri === "/") {
+  var prefetch = segmentPrefetchPath(uri);
+  if (prefetch) {
+    request.uri = prefetch;
+  } else if (uri === "/") {
     request.uri = "/index.html";
   } else if (uri.lastIndexOf(".") <= uri.lastIndexOf("/")) {
     request.uri = uri + ".html";

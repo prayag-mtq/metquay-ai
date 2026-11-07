@@ -52,7 +52,7 @@ export default function ResourcesPage() {
         </Container>
       </Section>
 
-      <Section id="playbooks" labelledBy="playbooks-title" className="scroll-mt-(--header-height) bg-surface">
+      <Section id="playbooks" labelledBy="playbooks-title" className="bg-surface">
         <Container>
           <SectionHeader id="playbooks-title" eyebrow="One complete journey" title="Seven playbooks, one per stage" />
           <nav aria-label="Playbook stages" className="mt-10">
@@ -72,7 +72,7 @@ export default function ResourcesPage() {
           </nav>
           <ul className="mt-12 grid gap-5 md:grid-cols-2">
             {playbooks.map((playbook, index) => (
-              <li key={playbook.id} id={playbook.id} data-playbook="" className="scroll-mt-28">
+              <li key={playbook.id} id={playbook.id} data-playbook="" className="">
                 <Reveal index={index % 2} className="flex h-full flex-col rounded-2xl border border-border bg-card p-7">
                   <p className="text-small font-semibold text-purple">{playbook.stage}</p>
                   <h3 className="mt-2 text-h3">{playbook.title}</h3>

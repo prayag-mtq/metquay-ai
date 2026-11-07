@@ -60,7 +60,7 @@ export default function ContactPage() {
           <ContactFormFromUrl endpoint={site.contactEndpoint} />
         </section>
       </Container>
-      <Section id="faq" labelledBy="faq-title" className="scroll-mt-(--header-height) border-t border-border">
+      <Section id="faq" labelledBy="faq-title" className="border-t border-border">
         <Container className="grid gap-10 lg:grid-cols-[1fr_2fr]">
           <h2 id="faq-title" className="text-h2">
             {faq.title}

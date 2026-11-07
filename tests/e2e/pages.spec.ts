@@ -44,3 +44,15 @@ test("playbook requests prefill the playbook title", async ({ page }) => {
     "Please send me the ISO/IEC 17025:2017 Audit Prep Playbook.",
   );
 });
+
+test("in-site CTA clicks preselect the topic", async ({ page }) => {
+  await page.goto("/solutions");
+  await page.getByRole("banner").getByRole("link", { name: "Get Free Trial" }).click();
+  await expect(page).toHaveURL(/\/contact\?intent=trial$/);
+  await expect(page.getByLabel("Topic")).toHaveValue("trial");
+
+  await page.goto("/resources");
+  await page.getByRole("link", { name: "Request the ISO/IEC 17025:2017 Audit Prep Playbook" }).click();
+  await expect(page.getByLabel("Topic")).toHaveValue("playbook");
+  await expect(page.getByLabel("How can we help?")).toHaveValue(/ISO\/IEC 17025:2017 Audit Prep Playbook/);
+});

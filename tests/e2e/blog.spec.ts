@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { sitemapPaths } from "./support/routes";
 
 const TABLE_POST = "/blog/linear-interpolation-made-simple-with-metquay";
 
@@ -36,4 +37,16 @@ test("no horizontal page overflow at 360px on a post with a table", async ({ pag
   await expect(page.locator(".prose table")).toBeVisible();
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   expect(overflow).toBeLessThanOrEqual(0);
+});
+
+test("no page scrolls sideways on a 360px phone", async ({ page, request }) => {
+  test.setTimeout(180_000);
+  await page.setViewportSize({ width: 360, height: 800 });
+  const overflowing: string[] = [];
+  for (const path of await sitemapPaths(request)) {
+    await page.goto(path);
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    if (overflow > 0) overflowing.push(`${path} (+${overflow}px)`);
+  }
+  expect(overflowing).toEqual([]);
 });

@@ -15,7 +15,7 @@ export const topics = {
 
 export type Intent = keyof typeof topics;
 
-export const isIntent = (value: string | null): value is Intent => value !== null && value in topics;
+export const isIntent = (value: string | null): value is Intent => value !== null && Object.hasOwn(topics, value);
 
 type Fields = { name: string; email: string; phone: string; topic: Intent; message: string };
 type Status =

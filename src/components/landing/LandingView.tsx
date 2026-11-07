@@ -48,7 +48,7 @@ export function LandingView({ page }: { page: LandingPage }) {
       <Container width="reading" className="mt-14 space-y-12 border-t border-border pt-12">
         {page.sections.map((section) => (
           <section key={section.heading} aria-labelledby={slug(section.heading)}>
-            <h2 id={slug(section.heading)} className="scroll-mt-24 text-h3">
+            <h2 id={slug(section.heading)} className="text-h3">
               {section.heading}
             </h2>
             <div className="mt-4 space-y-4 text-body-lg text-muted">

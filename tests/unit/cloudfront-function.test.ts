@@ -28,6 +28,13 @@ describe("cloudfront viewer-request function", () => {
     expect(redirect(run("/post/x"))).toEqual([301, "/blog/x"]);
   });
 
+  it("keeps the query string on every redirect", () => {
+    const q = { intent: { value: "trial" } };
+    expect(redirect(run("/contact/", "www.metquay.com", q))).toEqual([301, "/contact?intent=trial"]);
+    expect(redirect(run("/hi/contact", "www.metquay.com", q))).toEqual([301, "/contact?intent=trial"]);
+    expect(redirect(run("/post/x", "www.metquay.com", q))).toEqual([301, "/blog/x?intent=trial"]);
+  });
+
   it("strips trailing slashes", () => {
     expect(redirect(run("/company/"))).toEqual([301, "/company"]);
   });
@@ -36,6 +43,12 @@ describe("cloudfront viewer-request function", () => {
     expect(run("/").uri).toBe("/index.html");
     expect(run("/company").uri).toBe("/company.html");
     expect(run("/blog/x").uri).toBe("/blog/x.html");
+  });
+
+  it("maps flat router prefetch requests onto the exported segment folders", () => {
+    expect(run("/company/__next.company.__PAGE__.txt").uri).toBe("/company/__next.company/__PAGE__.txt");
+    expect(run("/blog/x/__next.blog.$d$slug.__PAGE__.txt").uri).toBe("/blog/x/__next.blog/$d$slug/__PAGE__.txt");
+    expect(run("/company/__next._tree.txt").uri).toBe("/company/__next._tree.txt");
   });
 
   it("leaves real files alone", () => {

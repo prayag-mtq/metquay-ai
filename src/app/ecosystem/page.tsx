@@ -40,7 +40,7 @@ function Split({
   children: ReactNode;
 }) {
   return (
-    <Section id={id} labelledBy={`${id}-title`} className="scroll-mt-(--header-height) border-t border-border">
+    <Section id={id} labelledBy={`${id}-title`} className="border-t border-border">
       <Container className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <Reveal>
           <Pill>{label}</Pill>
@@ -65,7 +65,7 @@ export default function EcosystemPage() {
         </Button>
       </PageHero>
 
-      <section id="integrations" aria-label="Integration categories" className="scroll-mt-(--header-height) pb-20">
+      <section id="integrations" aria-label="Integration categories" className="pb-20">
         <Container>
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {groups.map((group) => {
@@ -96,7 +96,7 @@ export default function EcosystemPage() {
         <SyncTable caption="Metrology sync" rows={metrology.rows} />
       </Split>
 
-      <Section id="directory" labelledBy="directory-title" className="scroll-mt-(--header-height) bg-surface">
+      <Section id="directory" labelledBy="directory-title" className="bg-surface">
         <Container>
           <SectionHeader id="directory-title" eyebrow="Directory" title={directory.title} lead={directory.lead} />
           <div className="mt-10">

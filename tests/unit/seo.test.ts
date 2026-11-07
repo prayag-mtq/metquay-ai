@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import robots from "@/app/robots";
 import sitemap from "@/app/sitemap";
 import { getAllPosts } from "@/lib/blog";
+import { site } from "@/config/site";
 import { jsonLd, pageMetadata } from "@/lib/seo";
 import { buildLlmsFull, buildLlmsTxt } from "../../scripts/gen-llms";
 
@@ -51,6 +52,13 @@ describe("sitemap", () => {
     expect(entries.every((e) => e.url.startsWith("https://www.metquay.com/") && e.lastModified)).toBe(true);
     expect(entries.some((e) => e.url.endsWith("/"))).toBe(true);
     expect(entries.filter((e) => e.url.endsWith("/") && e.url !== "https://www.metquay.com/")).toHaveLength(0);
+  });
+});
+
+describe("sitemap freshness", () => {
+  it("dates static pages by content changes, not by build time", () => {
+    const home = sitemap().find((e) => e.url === "https://www.metquay.com/");
+    expect(home?.lastModified).toBe(site.contentUpdated);
   });
 });
 

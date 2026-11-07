@@ -25,7 +25,7 @@ export default function CompanyPage() {
     <>
       <PageHero eyebrow={hero.eyebrow} title={hero.title} lead={hero.lead} />
 
-      <Section id="about" labelledBy="about-title" className="scroll-mt-(--header-height) border-t border-border">
+      <Section id="about" labelledBy="about-title" className="border-t border-border">
         <Container className="grid gap-12 lg:grid-cols-[3fr_2fr] lg:gap-16">
           <div>
             <Pill>{story.eyebrow}</Pill>

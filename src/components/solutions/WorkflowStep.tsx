@@ -12,7 +12,7 @@ export function WorkflowStep({ step, index }: { step: Step; index: number }) {
     <section
       id={step.id}
       aria-labelledby={`${step.id}-title`}
-      className="scroll-mt-[calc(var(--header-height)+4rem)] border-b border-border py-14 md:py-16"
+      className="scroll-mt-14 border-b border-border py-14 md:py-16"
     >
       <Container className="grid items-center gap-10 lg:grid-cols-[5fr_7fr] lg:gap-16">
         <Reveal className={cn(index % 2 === 1 && "lg:order-2")}>

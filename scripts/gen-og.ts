@@ -22,7 +22,7 @@ export function wrap(text: string, maxChars: number, maxLines: number) {
 }
 
 function card(title: string, footer: string, fontSize: number) {
-  const lines = wrap(title, Math.floor(1040 / (fontSize * 0.52)), 4);
+  const lines = wrap(title, Math.floor(1040 / (fontSize * 0.62)), 4);
   const lineHeight = fontSize * 1.18;
   const top = 360 - ((lines.length - 1) * lineHeight) / 2;
   const text = lines.map((line, i) => `<tspan x="80" y="${top + i * lineHeight}">${escapeXml(line)}</tspan>`).join("");

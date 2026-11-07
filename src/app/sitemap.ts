@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { absoluteUrl } from "@/config/site";
+import { absoluteUrl, site } from "@/config/site";
 import { landingPages } from "@/content/landing";
 import { getAllPosts, getCategories } from "@/lib/blog";
 import { categorySlug } from "@/lib/categories";
@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticRoutes.map((path) => ({
       url: absoluteUrl(path),
-      lastModified: path === "/blog" ? latest : new Date().toISOString().slice(0, 10),
+      lastModified: path === "/blog" ? latest : site.contentUpdated,
       changeFrequency: path === "/blog" ? ("weekly" as const) : ("monthly" as const),
       priority: path === "/" ? 1 : 0.8,
     })),
