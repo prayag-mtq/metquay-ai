@@ -1,6 +1,4 @@
-import matter from "gray-matter";
-import { readFileSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { writeFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 import { absoluteUrl, site } from "../src/config/site";
 import * as company from "../src/content/pages/company";
@@ -11,6 +9,7 @@ import * as solutions from "../src/content/pages/solutions";
 import { glossary } from "../src/content/glossary";
 import { landingPages } from "../src/content/landing";
 import { getAllPosts } from "../src/lib/blog";
+import { getLegalPage } from "../src/lib/legal";
 
 const link = (title: string, path: string, note?: string) =>
   `- [${title}](${absoluteUrl(path)})${note ? `: ${note}` : ""}`;
@@ -80,8 +79,6 @@ const section = (title: string, path: string, body: string[]) =>
 
 const bullets = (items: string[]) => items.map((item) => `- ${item}`).join("\n");
 
-const legal = (slug: string) => matter(readFileSync(join("content/legal", `${slug}.mdx`), "utf8"));
-
 export function buildLlmsFull() {
   return [
     `# ${site.name} — full site text\n\n> ${SUMMARY}`,
@@ -126,7 +123,7 @@ export function buildLlmsFull() {
     ]),
     section(resources.hero.title, "/resources", [
       resources.hero.lead,
-      ...resources.playbooks.map((p) => `## ${p.title}\n${p.stage}. ${p.body} (${p.length})`),
+      ...resources.playbooks.map((p) => `## ${p.title}\n${p.stage}. ${p.body} (${p.pages} pages · ${p.minutes} min)`),
     ]),
     section(company.hero.title, "/company", [
       company.hero.lead,
@@ -134,8 +131,8 @@ export function buildLlmsFull() {
       `## ${company.milestones.title}\n${bullets(company.milestones.items.map((m) => `${m.year}: ${m.title} — ${m.body}`))}`,
     ]),
     ...(["security", "privacy", "terms"] as const).map((slug) => {
-      const { data, content } = legal(slug);
-      return section(data.title, `/${slug}`, [content.trim()]);
+      const page = getLegalPage(slug);
+      return section(page.title, `/${slug}`, [page.body.trim()]);
     }),
   ].join("\n\n---\n\n");
 }

@@ -1,5 +1,6 @@
 import { mkdirSync } from "node:fs";
 import sharp from "sharp";
+import { hero } from "../src/content/pages/home";
 import { getAllPosts } from "../src/lib/blog";
 import { escapeXml } from "../src/lib/xml";
 
@@ -7,7 +8,7 @@ const WIDTH = 1200;
 const HEIGHT = 630;
 const FONT = "Manrope, Segoe UI, DejaVu Sans, Arial, sans-serif";
 
-export function wrap(text: string, maxChars: number, maxLines: number) {
+function wrap(text: string, maxChars: number, maxLines: number) {
   const lines: string[] = [];
   for (const word of text.split(/\s+/)) {
     const last = lines.at(-1);
@@ -56,11 +57,7 @@ async function main() {
   mkdirSync("public/og/blog", { recursive: true });
   const logo = await sharp("public/brand/logo.png").resize({ height: 44 }).toBuffer();
   await render(
-    card(
-      "Calibration Management, built for every detail and any scale",
-      "ISO/IEC 17025 · 21 CFR Part 11 · Offline-first · AI built in",
-      62,
-    ),
+    card(hero.title, "ISO/IEC 17025 · 21 CFR Part 11 · Offline-first · AI built in", 62),
     "public/og/default.png",
     logo,
   );

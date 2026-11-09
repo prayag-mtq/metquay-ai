@@ -8,7 +8,7 @@ export function WorkflowStrip({ className }: { className?: string }) {
   return (
     <div className={cn("overflow-hidden rounded-3xl border border-border bg-card", className)}>
       <div className="p-4 sm:p-6">
-        <p id="workflow-label" className="mb-5 text-center text-small font-semibold text-subtle">
+        <p className="mb-5 text-center text-small font-semibold text-subtle">
           One platform for the complete calibration workflow
         </p>
         <ul aria-label="Calibration workflow" className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">

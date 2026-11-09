@@ -27,7 +27,8 @@ export type Playbook = {
   title: string;
   body: string;
   audience: string[];
-  length: string;
+  pages: number;
+  minutes: number;
 };
 
 export const playbooks: Playbook[] = [
@@ -38,7 +39,8 @@ export const playbooks: Playbook[] = [
     title: "Digital Transformation Playbook",
     body: "Go from spreadsheets & paper to a fully integrated digital lab — the complete decision framework.",
     audience: ["Lab Director", "Quality Manager", "Operations"],
-    length: "42 pages · 28 min",
+    pages: 42,
+    minutes: 28,
   },
   {
     id: "2-migrate",
@@ -47,7 +49,8 @@ export const playbooks: Playbook[] = [
     title: "Master Migration Playbook",
     body: "From Qualer, GagePack, IndySoft or MET/TEAM® to metquay.ai in 10–20 weeks, data intact.",
     audience: ["IT", "QA"],
-    length: "52 pages · 33 min",
+    pages: 52,
+    minutes: 33,
   },
   {
     id: "3-erp",
@@ -56,7 +59,8 @@ export const playbooks: Playbook[] = [
     title: "ERP & Accounting Integration Playbook",
     body: "Connect to Odoo, NetSuite, QuickBooks, Dynamics, Business Central & Xero — field maps and go-live.",
     audience: ["IT", "Finance"],
-    length: "48 pages · 30 min",
+    pages: 48,
+    minutes: 30,
   },
   {
     id: "4-equipment",
@@ -65,7 +69,8 @@ export const playbooks: Playbook[] = [
     title: "metrology.net & Fluke MET/CAL® Playbook",
     body: "Close the loop: orders in, MET/CAL® execution, results captured, certificates delivered out.",
     audience: ["Lab Manager", "Technician"],
-    length: "40 pages · 26 min",
+    pages: 40,
+    minutes: 26,
   },
   {
     id: "5-validate",
@@ -74,7 +79,8 @@ export const playbooks: Playbook[] = [
     title: "FDA Validation Playbook (IQ/OQ/PQ)",
     body: "The full validation protocol aligned to 21 CFR Part 11, EU Annex 11 and GAMP 5.",
     audience: ["QA", "Regulatory Affairs"],
-    length: "62 pages · 40 min",
+    pages: 62,
+    minutes: 40,
   },
   {
     id: "6-audit",
@@ -83,7 +89,8 @@ export const playbooks: Playbook[] = [
     title: "ISO/IEC 17025:2017 Audit Prep Playbook",
     body: "Clause-by-clause preparation, a 5-phase timeline, and the 10 most common findings to prevent.",
     audience: ["Quality Manager", "Lab Director"],
-    length: "56 pages · 35 min",
+    pages: 56,
+    minutes: 35,
   },
   {
     id: "7-market",
@@ -92,7 +99,8 @@ export const playbooks: Playbook[] = [
     title: "Digital Marketing Playbook",
     body: "Build a digital marketing engine for a calibration business — strategy, channels, and a 90-day plan.",
     audience: ["Marketing", "Founder", "Sales"],
-    length: "38 pages · 24 min",
+    pages: 38,
+    minutes: 24,
   },
 ];
 

@@ -5,13 +5,15 @@ import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { Container } from "@/components/ui/Container";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { getAllPosts, getCategories } from "@/lib/blog";
-import { categoryFromSlug, categoryIntros, categorySlug } from "@/lib/categories";
+import { categoryIntros } from "@/content/blog";
+import { categoryFromSlug } from "@/lib/categories";
+import { slugify } from "@/lib/slugify";
 import { toSummary } from "@/lib/post";
 import { jsonLd, pageMetadata } from "@/lib/seo";
 
 export const dynamicParams = false;
 
-export const generateStaticParams = () => getCategories().map((c) => ({ category: categorySlug(c) }));
+export const generateStaticParams = () => getCategories().map((c) => ({ category: slugify(c) }));
 
 export async function generateMetadata({ params }: PageProps<"/blog/category/[category]">): Promise<Metadata> {
   const slug = (await params).category;

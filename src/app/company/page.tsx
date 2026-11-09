@@ -8,7 +8,7 @@ import { Pill } from "@/components/ui/Pill";
 import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { site } from "@/config/site";
+import { addressLine, phoneHref, site } from "@/config/site";
 import { cta, hero, hq, milestones, principles, story, team } from "@/content/pages/company";
 
 export const metadata: Metadata = pageMetadata({
@@ -17,8 +17,6 @@ export const metadata: Metadata = pageMetadata({
     "Metquay builds asset-centric, human-verified, AI-supercharged calibration management software. Meet the team in Bellevue, WA.",
   path: "/company",
 });
-
-const { street, city, region, postalCode } = site.address;
 
 export default function CompanyPage() {
   return (
@@ -114,9 +112,9 @@ export default function CompanyPage() {
           <div>
             <SectionHeader id="hq-title" eyebrow={hq.eyebrow} title={hq.title} lead={hq.body} align="left" />
             <address className="mt-6 text-body text-muted not-italic">
-              {site.legalName} · {street}, {city}, {region} {postalCode}
+              {site.legalName} · {addressLine}
               <br />
-              <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="hover:text-lime">
+              <a href={phoneHref} className="hover:text-lime">
                 {site.phone}
               </a>{" "}
               ·{" "}

@@ -72,7 +72,7 @@ export default function ResourcesPage() {
           </nav>
           <ul className="mt-12 grid gap-5 md:grid-cols-2">
             {playbooks.map((playbook, index) => (
-              <li key={playbook.id} id={playbook.id} data-playbook="" className="">
+              <li key={playbook.id} id={playbook.id} data-playbook="">
                 <Reveal index={index % 2} className="flex h-full flex-col rounded-2xl border border-border bg-card p-7">
                   <p className="text-small font-semibold text-purple">{playbook.stage}</p>
                   <h3 className="mt-2 text-h3">{playbook.title}</h3>
@@ -88,11 +88,11 @@ export default function ResourcesPage() {
                     <span className="flex items-center gap-4 text-small text-subtle">
                       <span className="flex items-center gap-1.5">
                         <BookOpen aria-hidden="true" className="size-4" />
-                        {playbook.length.split(" · ")[0]}
+                        {playbook.pages} pages
                       </span>
                       <span className="flex items-center gap-1.5">
                         <Clock aria-hidden="true" className="size-4" />
-                        {playbook.length.split(" · ")[1]}
+                        {playbook.minutes} min
                       </span>
                     </span>
                     <Button href={playbookHref(playbook.id)} size="sm" aria-label={`Request the ${playbook.title}`}>
@@ -142,27 +142,18 @@ export default function ResourcesPage() {
         <Container>
           <SectionHeader id="more-title" eyebrow={more.eyebrow} title={more.title} />
           <ul className="mt-12 grid gap-5 md:grid-cols-3">
-            {more.items.map((item) => {
-              return (
-                <li key={item.title}>
-                  <CardLink
-                    href={item.href}
-                    external={item.href.startsWith("http")}
-                    className="flex h-full flex-col p-7"
-                  >
-                    <span className="text-h4 font-semibold">{item.title}</span>
-                    <span className="mt-2 flex-1 text-body text-muted">{item.body}</span>
-                    <span className="mt-6 flex items-center gap-1.5 text-small font-semibold text-lime">
-                      {item.label}
-                      <ArrowRight
-                        aria-hidden="true"
-                        className="size-4 transition-transform group-hover:translate-x-1"
-                      />
-                    </span>
-                  </CardLink>
-                </li>
-              );
-            })}
+            {more.items.map((item) => (
+              <li key={item.title}>
+                <CardLink href={item.href} external={item.href.startsWith("http")} className="flex h-full flex-col p-7">
+                  <span className="text-h4 font-semibold">{item.title}</span>
+                  <span className="mt-2 flex-1 text-body text-muted">{item.body}</span>
+                  <span className="mt-6 flex items-center gap-1.5 text-small font-semibold text-lime">
+                    {item.label}
+                    <ArrowRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </CardLink>
+              </li>
+            ))}
           </ul>
         </Container>
       </Section>

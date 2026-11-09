@@ -10,7 +10,8 @@
     "lint": "eslint",
     "test": "vitest run",
     "e2e": "playwright test",
-    "serve": "node scripts/serve-out.mjs"
+    "serve": "node scripts/serve-out.mjs",
+    "screenshot": "node scripts/screenshot.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { site } from "@/config/site";
 import { cn } from "@/lib/cn";
 
-export const topics = {
+const topics = {
   trial: "Start a free trial",
   expert: "Talk to an expert",
   playbook: "Request a playbook",

@@ -9,7 +9,7 @@ import { Mdx } from "@/components/mdx/Mdx";
 import { Container } from "@/components/ui/Container";
 import { absoluteUrl } from "@/config/site";
 import { getAllPosts, getPost, getRelated } from "@/lib/blog";
-import { categorySlug } from "@/lib/categories";
+import { slugify } from "@/lib/slugify";
 import { formatDate, toSummary } from "@/lib/post";
 import { jsonLd, pageMetadata } from "@/lib/seo";
 import { JsonLd } from "@/components/ui/JsonLd";
@@ -56,7 +56,7 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
         <Container width="reading" className="pt-10 md:pt-14">
           <Breadcrumbs items={crumbs} />
           <Link
-            href={`/blog/category/${categorySlug(post.category)}`}
+            href={`/blog/category/${slugify(post.category)}`}
             className="mt-8 inline-block text-small font-semibold text-purple hover:underline"
           >
             {post.category}

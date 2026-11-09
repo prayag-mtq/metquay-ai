@@ -2,18 +2,31 @@ import type { MetadataRoute } from "next";
 import { absoluteUrl, site } from "@/config/site";
 import { landingPages } from "@/content/landing";
 import { getAllPosts, getCategories } from "@/lib/blog";
-import { categorySlug } from "@/lib/categories";
-import { staticRoutes } from "@/lib/routes";
+import { slugify } from "@/lib/slugify";
 
 export const dynamic = "force-static";
+
+const ROUTES = [
+  "/",
+  "/solutions",
+  "/ecosystem",
+  "/resources",
+  "/company",
+  "/contact",
+  "/blog",
+  "/glossary",
+  "/security",
+  "/privacy",
+  "/terms",
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts();
   const latest = posts[0]?.date;
   return [
-    ...staticRoutes.map((path) => ({
+    ...ROUTES.map((path) => ({
       url: absoluteUrl(path),
-      lastModified: path === "/blog" ? latest : site.contentUpdated,
+      lastModified: path === "/blog" || path === "/glossary" ? latest : site.contentUpdated,
       changeFrequency: path === "/blog" ? ("weekly" as const) : ("monthly" as const),
       priority: path === "/" ? 1 : 0.8,
     })),
@@ -23,9 +36,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.9,
     })),
-    { url: absoluteUrl("/glossary"), lastModified: latest, changeFrequency: "monthly" as const, priority: 0.7 },
     ...getCategories().map((category) => ({
-      url: absoluteUrl(`/blog/category/${categorySlug(category)}`),
+      url: absoluteUrl(`/blog/category/${slugify(category)}`),
       lastModified: posts.find((p) => p.category === category)?.date,
       changeFrequency: "weekly" as const,
       priority: 0.5,

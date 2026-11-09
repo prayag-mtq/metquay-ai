@@ -1,4 +1,5 @@
 import { absoluteUrl, site } from "@/config/site";
+import { blogIntro } from "@/content/blog";
 import { getAllPosts } from "./blog";
 import { escapeXml } from "./xml";
 
@@ -28,7 +29,7 @@ export function buildRssFeed() {
 <title>${escapeXml(`${site.name} blog`)}</title>
 <link>${absoluteUrl("/blog")}</link>
 <atom:link href="${absoluteUrl("/blog/feed.xml")}" rel="self" type="application/rss+xml"/>
-<description>Practical guidance for calibration teams, metrology leaders, and quality operations.</description>
+<description>${escapeXml(blogIntro)}</description>
 <language>en-us</language>
 <lastBuildDate>${rfc822(posts[0].date)}</lastBuildDate>
 ${items}

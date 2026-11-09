@@ -3,16 +3,17 @@ import sitemap from "@/app/sitemap";
 import { glossary } from "@/content/glossary";
 import { landingPages } from "@/content/landing";
 import { getAllPosts, getCategories } from "@/lib/blog";
-import { categoryFromSlug, categorySlug } from "@/lib/categories";
+import { categoryFromSlug } from "@/lib/categories";
+import { slugify } from "@/lib/slugify";
 import { buildRssFeed } from "@/lib/rss";
 
 const words = (text: string) => text.trim().split(/\s+/).length;
 
 describe("blog categories", () => {
   it("round-trips category names through URL slugs", () => {
-    expect(categorySlug("AI in calibration")).toBe("ai-in-calibration");
-    expect(categorySlug("ERP Integrations")).toBe("erp-integrations");
-    for (const category of getCategories()) expect(categoryFromSlug(categorySlug(category))).toBe(category);
+    expect(slugify("AI in calibration")).toBe("ai-in-calibration");
+    expect(slugify("ERP Integrations")).toBe("erp-integrations");
+    for (const category of getCategories()) expect(categoryFromSlug(slugify(category))).toBe(category);
     expect(categoryFromSlug("nope")).toBeNull();
   });
 });
@@ -72,6 +73,6 @@ describe("sitemap coverage", () => {
     const urls = sitemap().map((e) => e.url);
     for (const page of landingPages) expect(urls).toContain(`https://www.metquay.com/${page.slug}`);
     expect(urls).toContain("https://www.metquay.com/glossary");
-    for (const c of getCategories()) expect(urls).toContain(`https://www.metquay.com/blog/category/${categorySlug(c)}`);
+    for (const c of getCategories()) expect(urls).toContain(`https://www.metquay.com/blog/category/${slugify(c)}`);
   });
 });

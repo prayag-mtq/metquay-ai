@@ -99,4 +99,8 @@ export const site = {
   ] satisfies NavLink[],
 };
 
+export const phoneHref = `tel:${site.phone.replace(/\s/g, "")}`;
+
+export const addressLine = `${site.address.street}, ${site.address.city}, ${site.address.region} ${site.address.postalCode}`;
+
 export const absoluteUrl = (path: string) => (path === "/" ? `${site.url}/` : `${site.url}${path}`);

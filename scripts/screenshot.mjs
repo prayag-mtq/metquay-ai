@@ -1,15 +1,17 @@
 import { chromium } from "@playwright/test";
-const [, , url, out, w = "1280", full = "1"] = process.argv;
-const b = await chromium.launch();
-const p = await b.newPage({ viewport: { width: Number(w), height: 800 } });
-await p.goto(url, { waitUntil: "networkidle" });
-await p.evaluate(async () => {
+
+const [, , url, output, width = "1280", fullPage = "1"] = process.argv;
+
+const browser = await chromium.launch();
+const page = await browser.newPage({ viewport: { width: Number(width), height: 800 } });
+await page.goto(url, { waitUntil: "networkidle" });
+await page.evaluate(async () => {
   for (let y = 0; y < document.body.scrollHeight; y += 600) {
     window.scrollTo(0, y);
-    await new Promise((r) => setTimeout(r, 60));
+    await new Promise((resolve) => setTimeout(resolve, 60));
   }
   window.scrollTo(0, 0);
 });
-await p.waitForTimeout(400);
-await p.screenshot({ path: out, fullPage: full === "1" });
-await b.close();
+await page.waitForTimeout(400);
+await page.screenshot({ path: output, fullPage: fullPage === "1" });
+await browser.close();

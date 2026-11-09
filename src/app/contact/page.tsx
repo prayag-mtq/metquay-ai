@@ -6,7 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { Faq } from "@/components/ui/Faq";
 import { Pill } from "@/components/ui/Pill";
 import { Section } from "@/components/ui/Section";
-import { site } from "@/config/site";
+import { addressLine, phoneHref, site } from "@/config/site";
 import { contact } from "@/content/pages/contact";
 import { faq } from "@/content/pages/home";
 
@@ -17,13 +17,11 @@ export const metadata: Metadata = pageMetadata({
   path: "/contact",
 });
 
-const { street, city, region, postalCode } = site.address;
-
 const details = [
   { icon: Mail, label: site.contactEmail, href: `mailto:${site.contactEmail}` },
-  { icon: Phone, label: site.phone, href: `tel:${site.phone.replace(/\s/g, "")}` },
+  { icon: Phone, label: site.phone, href: phoneHref },
   { icon: CalendarDays, label: "Book a demo", href: site.meetingUrl, external: true },
-  { icon: MapPin, label: `${street}, ${city}, ${region} ${postalCode}` },
+  { icon: MapPin, label: addressLine },
 ];
 
 export default function ContactPage() {
