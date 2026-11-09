@@ -28,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: absoluteUrl(path),
       lastModified: path === "/blog" || path === "/glossary" ? latest : site.contentUpdated,
       changeFrequency: path === "/blog" ? ("weekly" as const) : ("monthly" as const),
-      priority: path === "/" ? 1 : 0.8,
+      priority: path === "/" ? 1 : path === "/glossary" ? 0.7 : 0.8,
     })),
     ...landingPages.map((page) => ({
       url: absoluteUrl(`/${page.slug}`),

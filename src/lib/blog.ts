@@ -2,6 +2,7 @@ import matter from "gray-matter";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { Post } from "./post";
+import { slugify } from "./slugify";
 
 const BLOG_DIR = join(process.cwd(), "content/blog");
 const WORDS_PER_MINUTE = 220;
@@ -43,3 +44,5 @@ export function getRelated(slug: string, count = 3) {
   const rest = others.filter((p) => p.category !== post?.category);
   return [...same, ...rest].slice(0, count);
 }
+
+export const categoryFromSlug = (slug: string) => getCategories().find((c) => slugify(c) === slug) ?? null;

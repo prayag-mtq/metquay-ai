@@ -2,8 +2,7 @@ import { describe, expect, it } from "vitest";
 import sitemap from "@/app/sitemap";
 import { glossary } from "@/content/glossary";
 import { landingPages } from "@/content/landing";
-import { getAllPosts, getCategories } from "@/lib/blog";
-import { categoryFromSlug } from "@/lib/categories";
+import { categoryFromSlug, getAllPosts, getCategories } from "@/lib/blog";
 import { slugify } from "@/lib/slugify";
 import { buildRssFeed } from "@/lib/rss";
 
