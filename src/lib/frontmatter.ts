@@ -7,16 +7,15 @@ const toIsoDate = (value: unknown) =>
 
 export function readMdx(path: string) {
   const { data, content } = matter(readFileSync(path, "utf8"));
-  const value = (key: string): unknown => data[key];
   const required = <T>(key: string, found: T | undefined) => {
     if (found === undefined) throw new Error(`${path}: missing front-matter "${key}"`);
     return found;
   };
   const optionalString = (key: string) => {
-    const found = value(key);
+    const found: unknown = data[key];
     return typeof found === "string" && found ? found : undefined;
   };
-  const optionalDate = (key: string) => toIsoDate(value(key));
+  const optionalDate = (key: string) => toIsoDate(data[key]);
 
   return {
     content,
