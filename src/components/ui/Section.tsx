@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+
 import { cn } from "@/lib/cn";
 
 type SectionProps = { id?: string; className?: string; labelledBy?: string; children: ReactNode };

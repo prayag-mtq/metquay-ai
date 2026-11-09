@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { FilterChips } from "@/components/ui/FilterChips";
 import type { DirectoryItem } from "@/content/pages/ecosystem";
 import { cn } from "@/lib/cn";

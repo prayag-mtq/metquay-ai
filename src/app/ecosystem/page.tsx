@@ -1,7 +1,7 @@
 import { Code2, Cpu, Gauge, Landmark } from "lucide-react";
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/seo";
 import type { ReactNode } from "react";
+
 import { IntegrationDirectory } from "@/components/ecosystem/IntegrationDirectory";
 import { SyncFlow } from "@/components/ecosystem/SyncFlow";
 import { SyncTable } from "@/components/ecosystem/SyncTable";
@@ -11,12 +11,15 @@ import { Button } from "@/components/ui/Button";
 import { CardLink } from "@/components/ui/CardLink";
 import { CheckList } from "@/components/ui/CheckList";
 import { Container } from "@/components/ui/Container";
+import { InfoCard } from "@/components/ui/InfoCard";
 import { Pill } from "@/components/ui/Pill";
 import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { StatGrid } from "@/components/ui/StatGrid";
 import { site } from "@/config/site";
 import { api, cta, directory, erp, groups, hero, metrology, partners, syncFlow } from "@/content/pages/ecosystem";
+import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Ecosystem & Integrations",
@@ -140,19 +143,9 @@ export default function EcosystemPage() {
           </div>
           <div className="space-y-4">
             {partners.types.map((type) => (
-              <div key={type.title} className="rounded-2xl border border-border bg-card p-6">
-                <h3 className="text-h4">{type.title}</h3>
-                <p className="mt-2 text-body text-muted">{type.body}</p>
-              </div>
+              <InfoCard key={type.title} title={type.title} body={type.body} />
             ))}
-            <dl className="grid grid-cols-2 gap-4">
-              {partners.stats.map((stat) => (
-                <div key={stat.label} className="flex flex-col rounded-2xl border border-border p-5">
-                  <dt className="text-small text-subtle">{stat.label}</dt>
-                  <dd className="order-first text-h3 font-semibold text-lime">{stat.value}</dd>
-                </div>
-              ))}
-            </dl>
+            <StatGrid stats={partners.stats} />
           </div>
         </Container>
       </Section>

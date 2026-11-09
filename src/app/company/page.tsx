@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/seo";
+
 import { TeamGrid } from "@/components/company/TeamGrid";
 import { CtaBand } from "@/components/layout/CtaBand";
 import { PageHero } from "@/components/layout/PageHero";
 import { Container } from "@/components/ui/Container";
+import { InfoCard } from "@/components/ui/InfoCard";
 import { Pill } from "@/components/ui/Pill";
 import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { StatGrid } from "@/components/ui/StatGrid";
 import { addressLine, phoneHref, site } from "@/config/site";
 import { cta, hero, hq, milestones, principles, story, team } from "@/content/pages/company";
+import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Company",
@@ -41,14 +44,7 @@ export default function CompanyPage() {
               <p className="text-small font-semibold text-purple">What we stand for</p>
               <p className="mt-2">{story.stand}</p>
             </blockquote>
-            <dl className="grid grid-cols-2 gap-4">
-              {story.stats.map((stat) => (
-                <div key={stat.label} className="flex flex-col rounded-2xl border border-border p-5">
-                  <dt className="text-small text-subtle">{stat.label}</dt>
-                  <dd className="order-first text-h2 font-semibold text-lime">{stat.value}</dd>
-                </div>
-              ))}
-            </dl>
+            <StatGrid stats={story.stats} size="lg" />
           </div>
         </Container>
       </Section>
@@ -81,9 +77,8 @@ export default function CompanyPage() {
           <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {principles.items.map((item, index) => (
               <li key={item.title}>
-                <Reveal index={index} className="h-full rounded-2xl border border-border bg-card p-6">
-                  <h3 className="text-h4">{item.title}</h3>
-                  <p className="mt-2 text-body text-muted">{item.body}</p>
+                <Reveal index={index} className="h-full">
+                  <InfoCard title={item.title} body={item.body} className="h-full" />
                 </Reveal>
               </li>
             ))}
@@ -125,9 +120,8 @@ export default function CompanyPage() {
           </div>
           <ul className="space-y-4">
             {hq.channels.map((channel) => (
-              <li key={channel.title} className="rounded-2xl border border-border bg-card p-6">
-                <h3 className="text-h4">{channel.title}</h3>
-                <p className="mt-2 text-body text-muted">{channel.body}</p>
+              <li key={channel.title}>
+                <InfoCard title={channel.title} body={channel.body} />
               </li>
             ))}
           </ul>

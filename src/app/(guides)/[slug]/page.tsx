@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+
 import { LandingView } from "@/components/landing/LandingView";
 import { site } from "@/config/site";
 import { getLandingPage, landingPages } from "@/content/landing";

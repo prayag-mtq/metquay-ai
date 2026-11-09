@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/Container";
 import { Pill } from "@/components/ui/Pill";
 import { site } from "@/config/site";
 import { hero } from "@/content/pages/home";
+
 import { WorkflowStrip } from "./WorkflowStrip";
 
 export function Hero() {

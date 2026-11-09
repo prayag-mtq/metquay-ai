@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import { cn } from "@/lib/cn";
 
 type ScreenshotProps = { src: string; alt: string; width: number; height: number; className?: string };

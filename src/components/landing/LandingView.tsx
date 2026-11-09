@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { CtaBand } from "@/components/layout/CtaBand";
 import { Button } from "@/components/ui/Button";
@@ -10,9 +11,9 @@ import { JsonLd } from "@/components/ui/JsonLd";
 import { Pill } from "@/components/ui/Pill";
 import { site } from "@/config/site";
 import type { LandingPage } from "@/content/landing";
-import { formatDate } from "@/lib/post";
-import { slugify } from "@/lib/slugify";
+import { formatDate } from "@/lib/date";
 import { jsonLd } from "@/lib/seo";
+import { slugify } from "@/lib/slugify";
 
 export function LandingView({ page }: { page: LandingPage }) {
   const crumbs = [

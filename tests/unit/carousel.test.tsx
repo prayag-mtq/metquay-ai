@@ -1,8 +1,10 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
+
 import { Carousel } from "@/components/ui/Carousel";
-import { mockReducedMotion } from "./support/motion";
+
+import { mockReducedMotion } from "../support/motion";
 
 const slides = ["A", "B", "C"].map((s) => <figure key={s}>Quote {s}</figure>);
 

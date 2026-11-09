@@ -2,7 +2,9 @@
 
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
+
 import { playbooks } from "@/content/pages/resources";
+
 import { ContactForm, isIntent } from "./ContactForm";
 
 type Props = { endpoint: string | null };

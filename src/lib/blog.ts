@@ -1,27 +1,26 @@
-import matter from "gray-matter";
-import { readdirSync, readFileSync } from "node:fs";
+import { readdirSync } from "node:fs";
 import { join } from "node:path";
+
+import { readMdx } from "./frontmatter";
 import type { Post } from "./post";
 import { slugify } from "./slugify";
 
 const BLOG_DIR = join(process.cwd(), "content/blog");
 const WORDS_PER_MINUTE = 220;
 
-const toIso = (value: unknown) => (value instanceof Date ? value.toISOString().slice(0, 10) : String(value));
-
 function readPost(file: string): Post {
-  const { data, content } = matter(readFileSync(join(BLOG_DIR, file), "utf8"));
+  const mdx = readMdx(join(BLOG_DIR, file));
   return {
     slug: file.replace(/\.mdx$/, ""),
-    title: data.title,
-    description: data.description,
-    date: toIso(data.date),
-    updated: data.updated ? toIso(data.updated) : undefined,
-    category: data.category,
-    author: data.author,
-    cover: data.cover,
-    readingMinutes: Math.max(1, Math.round(content.split(/\s+/).length / WORDS_PER_MINUTE)),
-    body: content,
+    title: mdx.string("title"),
+    description: mdx.string("description"),
+    date: mdx.date("date"),
+    updated: mdx.optionalDate("updated"),
+    category: mdx.string("category"),
+    author: mdx.optionalString("author"),
+    cover: mdx.optionalString("cover"),
+    readingMinutes: Math.max(1, Math.round(mdx.content.split(/\s+/).length / WORDS_PER_MINUTE)),
+    body: mdx.content,
   };
 }
 

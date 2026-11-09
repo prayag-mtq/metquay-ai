@@ -12,12 +12,17 @@ export function BlogTeaser() {
   return (
     <Section id="blog" labelledBy="blog-title">
       <Container>
-        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-          <SectionHeader id="blog-title" eyebrow={blogTeaser.eyebrow} title={blogTeaser.title} align="left" />
-          <Button href={blogTeaser.cta.href} variant="secondary" size="sm">
-            {blogTeaser.cta.label}
-          </Button>
-        </div>
+        <SectionHeader
+          id="blog-title"
+          eyebrow={blogTeaser.eyebrow}
+          title={blogTeaser.title}
+          align="left"
+          action={
+            <Button href={blogTeaser.cta.href} variant="secondary" size="sm">
+              {blogTeaser.cta.label}
+            </Button>
+          }
+        />
         <ul className="mt-12 grid gap-6 md:grid-cols-3">
           {posts.map((post) => (
             <li key={post.slug}>

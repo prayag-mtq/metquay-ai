@@ -1,8 +1,8 @@
-import { Screenshot } from "@/components/ui/Screenshot";
 import { CheckList } from "@/components/ui/CheckList";
 import { Container } from "@/components/ui/Container";
 import { Pill } from "@/components/ui/Pill";
 import { Reveal } from "@/components/ui/Reveal";
+import { Screenshot } from "@/components/ui/Screenshot";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { platform } from "@/content/pages/home";

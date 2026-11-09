@@ -1,5 +1,6 @@
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { Fragment } from "react";
+
 import { syncFlow } from "@/content/pages/ecosystem";
 
 export function SyncFlow() {

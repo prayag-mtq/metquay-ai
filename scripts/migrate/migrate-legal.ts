@@ -1,11 +1,13 @@
-import { load } from "cheerio";
-import matter from "gray-matter";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
+
+import { load } from "cheerio";
+import matter from "gray-matter";
+
+import { CRAWL } from "./crawl";
 import { createTurndown, tightenLists } from "./migrate-blog";
 
-const CRAWL = "metquay-website-assets/metquay-public-assets";
 const PAGES = { security: "Security", privacy: "Privacy Policy", terms: "Terms of Service" } as const;
 
 export function migrateLegal(html: string, title: string) {

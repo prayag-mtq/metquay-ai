@@ -1,9 +1,11 @@
 import { describe, expect, it } from "vitest";
+
 import robots from "@/app/robots";
 import sitemap from "@/app/sitemap";
-import { getAllPosts } from "@/lib/blog";
 import { site } from "@/config/site";
+import { getAllPosts } from "@/lib/blog";
 import { jsonLd, pageMetadata } from "@/lib/seo";
+
 import { buildLlmsFull, buildLlmsTxt } from "../../scripts/gen-llms";
 
 describe("pageMetadata", () => {

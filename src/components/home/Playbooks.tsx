@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+
 import { Button } from "@/components/ui/Button";
 import { CardLink } from "@/components/ui/CardLink";
 import { Container } from "@/components/ui/Container";
@@ -10,12 +11,17 @@ export function Playbooks() {
   return (
     <Section id="playbooks" labelledBy="playbooks-title" className="border-t border-border">
       <Container>
-        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-          <SectionHeader id="playbooks-title" eyebrow={playbooks.eyebrow} title={playbooks.title} align="left" />
-          <Button href={playbooks.cta.href} variant="secondary" size="sm">
-            {playbooks.cta.label}
-          </Button>
-        </div>
+        <SectionHeader
+          id="playbooks-title"
+          eyebrow={playbooks.eyebrow}
+          title={playbooks.title}
+          align="left"
+          action={
+            <Button href={playbooks.cta.href} variant="secondary" size="sm">
+              {playbooks.cta.label}
+            </Button>
+          }
+        />
         <ul className="mt-12 grid gap-5 md:grid-cols-3">
           {playbooks.items.map((item) => (
             <li key={item.title}>

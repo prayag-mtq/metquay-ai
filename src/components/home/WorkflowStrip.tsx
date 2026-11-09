@@ -1,7 +1,9 @@
 import { ShieldCheck } from "lucide-react";
 import Link from "next/link";
+
 import { compliance, integrations, workflow } from "@/content/pages/home";
 import { cn } from "@/lib/cn";
+
 import { workflowIcons } from "./icons";
 
 export function WorkflowStrip({ className }: { className?: string }) {

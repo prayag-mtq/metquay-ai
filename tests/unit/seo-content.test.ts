@@ -1,10 +1,11 @@
 import { describe, expect, it } from "vitest";
+
 import sitemap from "@/app/sitemap";
 import { glossary } from "@/content/glossary";
 import { landingPages } from "@/content/landing";
 import { categoryFromSlug, getAllPosts, getCategories } from "@/lib/blog";
-import { slugify } from "@/lib/slugify";
 import { buildRssFeed } from "@/lib/rss";
+import { slugify } from "@/lib/slugify";
 
 const words = (text: string) => text.trim().split(/\s+/).length;
 

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { extractText } from "../../scripts/extract-text";
+
+import { extractText } from "../../scripts/migrate/extract-text";
 import { hasCrawl, readCrawl } from "../support/crawl";
 
 describe("extractText", () => {

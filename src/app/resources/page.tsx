@@ -1,15 +1,17 @@
 import { ArrowRight, BookOpen, Clock } from "lucide-react";
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/seo";
+
 import { PageHero } from "@/components/layout/PageHero";
 import { Button } from "@/components/ui/Button";
 import { CardLink } from "@/components/ui/CardLink";
 import { Container } from "@/components/ui/Container";
+import { InfoCard } from "@/components/ui/InfoCard";
 import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { site } from "@/config/site";
 import { consult, hero, intro, more, playbooks, why } from "@/content/pages/resources";
+import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Resources & Playbooks",
@@ -129,10 +131,7 @@ export default function ResourcesPage() {
           </div>
           <div className="space-y-4">
             {why.sizes.map((size) => (
-              <div key={size.title} className="rounded-2xl border border-border bg-card p-6">
-                <h3 className="text-h4">{size.title}</h3>
-                <p className="mt-2 text-body text-muted">{size.body}</p>
-              </div>
+              <InfoCard key={size.title} title={size.title} body={size.body} />
             ))}
           </div>
         </Container>

@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { type ReactNode, useState } from "react";
+
 import { cn } from "@/lib/cn";
 
 type CarouselProps = { label: string; children: ReactNode[]; seconds?: number; className?: string };

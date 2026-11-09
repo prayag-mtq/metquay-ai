@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import type { Person } from "@/content/pages/company";
 
 const initials = (name: string) =>

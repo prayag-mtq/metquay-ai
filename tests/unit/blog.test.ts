@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+
 import { getAllPosts, getCategories, getPost, getRelated } from "@/lib/blog";
 
 describe("blog", () => {

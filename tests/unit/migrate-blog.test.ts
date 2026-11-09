@@ -1,6 +1,7 @@
 import matter from "gray-matter";
 import { describe, expect, it } from "vitest";
-import { migrateBlog, type SearchEntry } from "../../scripts/migrate-blog";
+
+import { migrateBlog, type SearchEntry } from "../../scripts/migrate/migrate-blog";
 import { hasCrawl, readCrawl } from "../support/crawl";
 
 const index: Record<string, SearchEntry> = hasCrawl

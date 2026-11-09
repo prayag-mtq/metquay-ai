@@ -1,8 +1,10 @@
 import { render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
+
 import { MotionProvider } from "@/components/layout/MotionProvider";
 import { Reveal } from "@/components/ui/Reveal";
-import { mockReducedMotion, placeBelowFold } from "./support/motion";
+
+import { mockReducedMotion, placeBelowFold } from "../support/motion";
 
 describe("Reveal under reduced motion", () => {
   it("never hides content", async () => {

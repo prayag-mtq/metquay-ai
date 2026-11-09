@@ -1,5 +1,7 @@
 import { Plus } from "lucide-react";
+
 import { jsonLd } from "@/lib/seo";
+
 import { JsonLd } from "./JsonLd";
 
 type FaqItem = { id: string; q: string; a: string };

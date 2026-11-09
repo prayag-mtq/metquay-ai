@@ -1,16 +1,18 @@
-import { load, type CheerioAPI } from "cheerio";
-import matter from "gray-matter";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { pathToFileURL } from "node:url";
+
+import { type CheerioAPI, load } from "cheerio";
+import matter from "gray-matter";
 import sharp from "sharp";
 import TurndownService from "turndown";
 import { gfm } from "turndown-plugin-gfm";
 
+import { CRAWL } from "./crawl";
+
 export type SearchEntry = { title: string; description: string; p: string[] };
 export type MigratedImage = { src: string; dest: string };
 
-const CRAWL = "metquay-website-assets/metquay-public-assets";
 const SITE_HOSTS = /^https?:\/\/(www\.)?metquay\.(com|ai)/;
 
 const CATEGORY_FIXES: Record<string, string> = { "Efficient Approches": "Efficient Approaches" };

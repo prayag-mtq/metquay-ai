@@ -1,9 +1,10 @@
-import { Container } from "@/components/ui/Container";
 import { CheckList } from "@/components/ui/CheckList";
+import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Tabs } from "@/components/ui/Tabs";
 import { roles } from "@/content/pages/home";
+
 import { roleIcons } from "./icons";
 
 export function RoleTabs() {

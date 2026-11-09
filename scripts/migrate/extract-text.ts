@@ -1,7 +1,10 @@
-import { load } from "cheerio";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
+
+import { load } from "cheerio";
+
+import { CRAWL } from "./crawl";
 
 const DEDUPE_WINDOW = 12;
 const PAGES = ["index", "solutions", "ecosystem", "resources", "company", "contact", "security", "privacy", "terms"];
@@ -22,7 +25,7 @@ export function extractText(html: string): string[] {
 }
 
 function main() {
-  const src = "metquay-website-assets/metquay-public-assets/pages";
+  const src = join(CRAWL, "pages");
   const dest = "docs/source-text";
   mkdirSync(dest, { recursive: true });
   for (const page of PAGES) {

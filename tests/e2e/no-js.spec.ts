@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
-import { sitemapPaths } from "./support/routes";
+
+import { sitemapPaths } from "../support/routes";
 
 test.use({ javaScriptEnabled: false });
 

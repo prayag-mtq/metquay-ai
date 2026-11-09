@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+
 import { Button } from "@/components/ui/Button";
 import { FilterChips } from "@/components/ui/FilterChips";
-import { useHasMounted } from "@/lib/use-has-mounted";
 import type { PostSummary } from "@/lib/post";
+import { useHasMounted } from "@/lib/use-has-mounted";
+
 import { PostCard } from "./PostCard";
 
 const PAGE_SIZE = 12;

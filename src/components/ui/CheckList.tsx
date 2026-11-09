@@ -1,4 +1,5 @@
 import { Check } from "lucide-react";
+
 import { cn } from "@/lib/cn";
 
 export function CheckList({ items, className }: { items: string[]; className?: string }) {

@@ -1,6 +1,8 @@
 import Link from "next/link";
+
 import { Container } from "@/components/ui/Container";
-import { site, type NavLink } from "@/config/site";
+import { type NavLink, site } from "@/config/site";
+
 import { Logo } from "./Logo";
 
 const badges = ["ISO 17025", "21 CFR Part 11", "GAMP-5"];

@@ -1,5 +1,7 @@
 import { mkdirSync } from "node:fs";
+
 import sharp from "sharp";
+
 import { hero } from "../src/content/pages/home";
 import { getAllPosts } from "../src/lib/blog";
 import { escapeXml } from "../src/lib/xml";

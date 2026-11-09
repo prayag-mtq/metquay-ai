@@ -1,9 +1,11 @@
 import { render, waitFor } from "@testing-library/react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
+
 import { MotionProvider } from "@/components/layout/MotionProvider";
 import { Reveal } from "@/components/ui/Reveal";
-import { mockReducedMotion, placeBelowFold } from "./support/motion";
+
+import { mockReducedMotion, placeBelowFold } from "../support/motion";
 
 describe("Reveal", () => {
   it("renders visible markup on the server", () => {

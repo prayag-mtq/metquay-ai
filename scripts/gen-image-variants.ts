@@ -1,7 +1,9 @@
 import { existsSync, readdirSync, statSync } from "node:fs";
 import { availableParallelism } from "node:os";
 import { join } from "node:path";
+
 import sharp from "sharp";
+
 import { IMAGE_WIDTHS, variantPath } from "../src/lib/image-loader";
 
 const ROOTS = ["public/images", "public/blog", "public/brand"];

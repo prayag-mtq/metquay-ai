@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/seo";
+
 import { BlogIndex } from "@/components/blog/BlogIndex";
 import { PageHero } from "@/components/layout/PageHero";
 import { Container } from "@/components/ui/Container";
 import { blogIntro } from "@/content/blog";
 import { getAllPosts, getCategories } from "@/lib/blog";
 import { toSummary } from "@/lib/post";
+import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Blog",

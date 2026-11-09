@@ -1,6 +1,6 @@
 import { CalendarDays, Mail, MapPin, Phone } from "lucide-react";
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/seo";
+
 import { ContactFormFromUrl } from "@/components/contact/ContactFormFromUrl";
 import { Container } from "@/components/ui/Container";
 import { Faq } from "@/components/ui/Faq";
@@ -9,6 +9,7 @@ import { Section } from "@/components/ui/Section";
 import { addressLine, phoneHref, site } from "@/config/site";
 import { contact } from "@/content/pages/contact";
 import { faq } from "@/content/pages/home";
+import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Contact",

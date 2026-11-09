@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
-import { sitemapPaths } from "./support/routes";
+
+import { sitemapPaths } from "../support/routes";
 
 const TABLE_POST = "/blog/linear-interpolation-made-simple-with-metquay";
 

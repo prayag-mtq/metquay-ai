@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+
 import { cn } from "@/lib/cn";
 
 const widths = { page: "max-w-[1200px]", reading: "max-w-[720px]" };

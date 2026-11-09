@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import { cn } from "@/lib/cn";
 
 type StepNavProps = { steps: { id: string; short: string }[] };

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+
 import { absoluteUrl, site } from "@/config/site";
+
 import type { Post } from "./post";
 
 export const OG_IMAGE = { url: "/og/default.png", width: 1200, height: 630, alt: site.name };

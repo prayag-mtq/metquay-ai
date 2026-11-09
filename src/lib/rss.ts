@@ -1,9 +1,9 @@
 import { absoluteUrl, site } from "@/config/site";
 import { blogIntro } from "@/content/blog";
-import { getAllPosts } from "./blog";
-import { escapeXml } from "./xml";
 
-const rfc822 = (iso: string) => new Date(`${iso}T12:00:00Z`).toUTCString();
+import { getAllPosts } from "./blog";
+import { rfc822 } from "./date";
+import { escapeXml } from "./xml";
 
 export function buildRssFeed() {
   const posts = getAllPosts();

@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
+
 import { Tabs } from "@/components/ui/Tabs";
 
 const items = ["One", "Two", "Three"].map((label) => ({ id: label.toLowerCase(), label, panel: <p>{label} panel</p> }));

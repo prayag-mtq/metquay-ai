@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+
 import { absoluteUrl, site } from "@/config/site";
 import { landingPages } from "@/content/landing";
 import { getAllPosts, getCategories } from "@/lib/blog";

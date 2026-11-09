@@ -1,8 +1,9 @@
-import type { ComponentProps } from "react";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import type { ComponentProps } from "react";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
+
 import { Figure } from "./Figure";
 import { YouTube } from "./YouTube";
 

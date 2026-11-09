@@ -1,7 +1,8 @@
 "use client";
 
 import { m, useInView, useReducedMotion } from "motion/react";
-import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
+import { type ReactNode, useLayoutEffect, useRef, useState } from "react";
+
 import { presets, STAGGER_STEP } from "@/lib/motion";
 
 type RevealProps = {

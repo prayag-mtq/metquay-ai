@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import { JsonLd } from "@/components/ui/JsonLd";
-import { site } from "@/config/site";
-import { jsonLd, pageMetadata } from "@/lib/seo";
+
 import { BlogTeaser } from "@/components/home/BlogTeaser";
 import { Hero } from "@/components/home/Hero";
 import { HomeFaq } from "@/components/home/HomeFaq";
@@ -11,6 +9,9 @@ import { Reasons } from "@/components/home/Reasons";
 import { RoleTabs } from "@/components/home/RoleTabs";
 import { Testimonials } from "@/components/home/Testimonials";
 import { CtaBand } from "@/components/layout/CtaBand";
+import { JsonLd } from "@/components/ui/JsonLd";
+import { site } from "@/config/site";
+import { jsonLd, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: `Calibration Management Software for ISO 17025 Labs | ${site.name}`,

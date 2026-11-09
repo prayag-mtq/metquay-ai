@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
-import { sitemapPaths } from "./support/routes";
+
+import { sitemapPaths } from "../support/routes";
 
 test("discovery files are served", async ({ request }) => {
   for (const path of ["/robots.txt", "/sitemap.xml", "/llms.txt", "/llms-full.txt"]) {

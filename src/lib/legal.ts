@@ -1,10 +1,10 @@
-import matter from "gray-matter";
-import { readFileSync } from "node:fs";
 import { join } from "node:path";
+
+import { readMdx } from "./frontmatter";
 
 export type LegalSlug = "security" | "privacy" | "terms";
 
 export function getLegalPage(slug: LegalSlug) {
-  const { data, content } = matter(readFileSync(join(process.cwd(), "content/legal", `${slug}.mdx`), "utf8"));
-  return { title: data.title as string, updated: data.updated as string | undefined, body: content };
+  const mdx = readMdx(join(process.cwd(), "content/legal", `${slug}.mdx`));
+  return { title: mdx.string("title"), updated: mdx.optionalString("updated"), body: mdx.content };
 }

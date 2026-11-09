@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+
 import { DEVICE_SIZES, IMAGE_SIZES } from "./src/lib/image-loader";
 
 const nextConfig: NextConfig = {

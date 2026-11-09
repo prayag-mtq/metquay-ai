@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+
 import { Container } from "@/components/ui/Container";
 import { Faq } from "@/components/ui/Faq";
 import { Section } from "@/components/ui/Section";

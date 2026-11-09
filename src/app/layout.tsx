@@ -1,6 +1,8 @@
+import "@/styles/globals.css";
+
 import type { Metadata, Viewport } from "next";
 import { Manrope } from "next/font/google";
-import "@/styles/globals.css";
+
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { MotionProvider } from "@/components/layout/MotionProvider";

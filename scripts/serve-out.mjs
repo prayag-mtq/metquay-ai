@@ -1,5 +1,5 @@
-import { createServer } from "node:http";
 import { readFile, stat } from "node:fs/promises";
+import { createServer } from "node:http";
 import { createRequire } from "node:module";
 import { extname, join, normalize } from "node:path";
 

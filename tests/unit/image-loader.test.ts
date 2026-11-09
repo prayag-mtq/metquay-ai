@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+
 import imageLoader, { IMAGE_WIDTHS, variantPath } from "@/lib/image-loader";
 
 describe("image loader", () => {

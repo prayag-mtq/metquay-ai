@@ -1,13 +1,14 @@
 import { writeFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
+
 import { absoluteUrl, site } from "../src/config/site";
+import { glossary } from "../src/content/glossary";
+import { landingPages } from "../src/content/landing";
 import * as company from "../src/content/pages/company";
 import * as ecosystem from "../src/content/pages/ecosystem";
 import * as home from "../src/content/pages/home";
 import * as resources from "../src/content/pages/resources";
 import * as solutions from "../src/content/pages/solutions";
-import { glossary } from "../src/content/glossary";
-import { landingPages } from "../src/content/landing";
 import { getAllPosts } from "../src/lib/blog";
 import { getLegalPage } from "../src/lib/legal";
 

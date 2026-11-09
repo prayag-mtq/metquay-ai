@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it, vi } from "vitest";
+
 import { ContactForm } from "@/components/contact/ContactForm";
 
 const fill = async (user: ReturnType<typeof userEvent.setup>) => {

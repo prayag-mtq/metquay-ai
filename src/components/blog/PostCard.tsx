@@ -1,5 +1,7 @@
 import { CardLink } from "@/components/ui/CardLink";
-import { formatDate, type PostSummary } from "@/lib/post";
+import { formatDate } from "@/lib/date";
+import type { PostSummary } from "@/lib/post";
+
 import { PostCover } from "./PostCover";
 
 export function PostCard({ post, headingLevel = "h3" }: { post: PostSummary; headingLevel?: "h2" | "h3" }) {

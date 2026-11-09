@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+
 import { PostCard } from "@/components/blog/PostCard";
 import { PostNav } from "@/components/blog/PostNav";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { CtaBand } from "@/components/layout/CtaBand";
 import { Mdx } from "@/components/mdx/Mdx";
 import { Container } from "@/components/ui/Container";
+import { JsonLd } from "@/components/ui/JsonLd";
 import { absoluteUrl } from "@/config/site";
 import { getAllPosts, getPost, getRelated } from "@/lib/blog";
-import { slugify } from "@/lib/slugify";
-import { formatDate, toSummary } from "@/lib/post";
+import { formatDate } from "@/lib/date";
+import { toSummary } from "@/lib/post";
 import { jsonLd, pageMetadata } from "@/lib/seo";
-import { JsonLd } from "@/components/ui/JsonLd";
+import { slugify } from "@/lib/slugify";
 
 export const dynamicParams = false;
 

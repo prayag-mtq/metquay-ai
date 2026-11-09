@@ -1,5 +1,6 @@
-import Image from "next/image";
 import { join } from "node:path";
+
+import Image from "next/image";
 import sharp from "sharp";
 
 export async function Figure({ src, alt }: { src: string; alt: string }) {

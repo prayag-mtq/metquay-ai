@@ -8,6 +8,7 @@ import {
   House,
   Layers,
   LayoutGrid,
+  type LucideIcon,
   RefreshCw,
   ScanBarcode,
   ServerCog,
@@ -17,8 +18,8 @@ import {
   Users,
   Waypoints,
   WifiOff,
-  type LucideIcon,
 } from "lucide-react";
+
 import type { ReasonIcon, RoleIcon, WorkflowIcon } from "@/content/pages/home";
 
 export const workflowIcons: Record<WorkflowIcon, LucideIcon> = {

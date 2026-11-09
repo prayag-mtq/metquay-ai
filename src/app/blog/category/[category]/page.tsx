@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+
 import { PostCard } from "@/components/blog/PostCard";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { Container } from "@/components/ui/Container";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { categoryFromSlug, getAllPosts, getCategories } from "@/lib/blog";
 import { categoryIntros } from "@/content/blog";
-import { slugify } from "@/lib/slugify";
+import { categoryFromSlug, getAllPosts, getCategories } from "@/lib/blog";
 import { toSummary } from "@/lib/post";
 import { jsonLd, pageMetadata } from "@/lib/seo";
+import { slugify } from "@/lib/slugify";
 
 export const dynamicParams = false;
 
