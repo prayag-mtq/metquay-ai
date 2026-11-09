@@ -15,6 +15,7 @@ const ROUTES = [
   "/company",
   "/contact",
   "/blog",
+  "/guides",
   "/glossary",
   "/security",
   "/privacy",

@@ -33,13 +33,13 @@ describe("rss feed", () => {
 });
 
 describe("landing pages", () => {
-  it("covers the target keywords", () => {
-    expect(landingPages.map((p) => p.slug)).toEqual([
-      "calibration-management-software",
-      "iso-17025-calibration-software",
-      "21-cfr-part-11-calibration-software",
-      "calibration-software-migration",
-    ]);
+  it("covers the target keywords with one page each", () => {
+    const slugs = landingPages.map((p) => p.slug);
+    expect(new Set(slugs).size).toBe(slugs.length);
+    expect(new Set(landingPages.map((p) => p.keyword.toLowerCase())).size).toBe(slugs.length);
+    for (const slug of ["calibration-management-software", "calibration-software", "calibration-lab-software"]) {
+      expect(slugs).toContain(slug);
+    }
   });
 
   it.each(landingPages.map((p) => [p.slug, p]))("%s is built for answer engines", (_, page) => {

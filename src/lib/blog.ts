@@ -13,6 +13,7 @@ function readPost(file: string): Post {
   return {
     slug: file.replace(/\.mdx$/, ""),
     title: mdx.string("title"),
+    seoTitle: mdx.optionalString("seoTitle"),
     description: mdx.string("description"),
     date: mdx.date("date"),
     updated: mdx.optionalDate("updated"),

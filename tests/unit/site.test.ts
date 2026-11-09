@@ -1,24 +1,9 @@
 import { describe, expect, it } from "vitest";
 
+import sitemap from "@/app/sitemap";
 import { site } from "@/config/site";
 
-const routes = [
-  "/",
-  "/solutions",
-  "/ecosystem",
-  "/resources",
-  "/company",
-  "/contact",
-  "/security",
-  "/privacy",
-  "/terms",
-  "/blog",
-  "/glossary",
-  "/calibration-management-software",
-  "/iso-17025-calibration-software",
-  "/21-cfr-part-11-calibration-software",
-  "/calibration-software-migration",
-];
+const routes = sitemap().map((entry) => new URL(entry.url).pathname);
 const pathOf = (href: string) => href.split(/[?#]/)[0] || "/";
 const footerLinks = site.footer.flatMap((col) => col.links);
 

@@ -79,6 +79,7 @@ export const site = {
         { label: "21 CFR Part 11", href: "/21-cfr-part-11-calibration-software" },
         { label: "Migration", href: "/calibration-software-migration" },
         { label: "Glossary", href: "/glossary" },
+        { label: "All guides", href: "/guides" },
       ],
     },
     {

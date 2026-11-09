@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { GuideCard } from "@/components/blog/GuideCard";
 import { PostCard } from "@/components/blog/PostCard";
 import { PostNav } from "@/components/blog/PostNav";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
@@ -12,6 +13,7 @@ import { JsonLd } from "@/components/ui/JsonLd";
 import { absoluteUrl } from "@/config/site";
 import { getAllPosts, getPost, getRelated } from "@/lib/blog";
 import { formatDate } from "@/lib/date";
+import { guideForPost } from "@/lib/guides";
 import { toSummary } from "@/lib/post";
 import { jsonLd, pageMetadata } from "@/lib/seo";
 import { slugify } from "@/lib/slugify";
@@ -24,7 +26,7 @@ export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): P
   const post = getPost((await params).slug);
   return post
     ? pageMetadata({
-        title: post.title,
+        title: post.seoTitle ?? post.title,
         description: post.description,
         path: `/blog/${post.slug}`,
         type: "article",
@@ -73,7 +75,10 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
           <Mdx source={post.body} />
         </Container>
       </article>
-      <Container width="reading" className="mt-16">
+      <Container width="reading" className="mt-12">
+        <GuideCard page={guideForPost(post)} />
+      </Container>
+      <Container width="reading" className="mt-12">
         <PostNav newer={newer} older={older} />
       </Container>
       <Container className="mt-20">

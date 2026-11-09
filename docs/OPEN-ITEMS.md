@@ -42,3 +42,11 @@ The site now has keyword landing pages, a glossary, category hubs, an RSS feed, 
 7. **Long blog titles**: 60 posts have titles over 70 characters, which Google truncates in results. Give the important posts a shorter search title (needs an optional `seoTitle` front-matter field; `npm run audit:seo` lists them).
 8. **Security contact**: `public/.well-known/security.txt` uses `consulting@metquay.com` and expires 2027-11-09. Swap in a dedicated security address if there is one, and renew the date yearly.
 9. **Preview domains**: every `*.vercel.app` response sends `X-Robots-Tag: noindex`, so previews never compete with `www.metquay.com`. The production domain is unaffected.
+10. **Review the 13 new guides** in `src/content/landing/` before launch. They use only facts already on the site, in the security page or in Metquay's own blog posts. Claims worth confirming:
+    - CMC-based uncertainty adjustment of imported MET/CAL runs. This comes from the MET/CAL blog post only.
+    - Label fields and bulk label printing. These come from a 2023 post about the earlier product.
+    - The Odoo order-to-work-order flow, attributed to the Odoo post.
+    - That AI converts spreadsheets into worksheets. This is stated on the security page.
+    - How tracefii relates to metquay.ai. It isn't mentioned in the guides.
+    - Whether on-premise deployment is offered. A 2023 post says yes; the security page lists only AWS and private cloud. The guides don't claim it.
+11. **Blog search titles**: 75 posts have a new `seoTitle` (≤ 60 characters, year stamps removed). Skim them in the front matter.

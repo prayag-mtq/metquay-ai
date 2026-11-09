@@ -39,6 +39,7 @@ export function buildLlmsTxt() {
     ].join("\n"),
     [
       "## Guides",
+      link("All calibration software guides", "/guides"),
       ...landingPages.map((p) => link(p.title, `/${p.slug}.md`, p.summary)),
       link(
         "Calibration & metrology glossary",

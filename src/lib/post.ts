@@ -1,6 +1,7 @@
 export type Post = {
   slug: string;
   title: string;
+  seoTitle?: string;
   description: string;
   date: string;
   updated?: string;

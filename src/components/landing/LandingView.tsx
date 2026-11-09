@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
+import { PostCard } from "@/components/blog/PostCard";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { CtaBand } from "@/components/layout/CtaBand";
 import { Button } from "@/components/ui/Button";
@@ -11,13 +12,19 @@ import { JsonLd } from "@/components/ui/JsonLd";
 import { Pill } from "@/components/ui/Pill";
 import { site } from "@/config/site";
 import type { LandingPage } from "@/content/landing";
+import { getAllPosts } from "@/lib/blog";
 import { formatDate } from "@/lib/date";
+import { guideForPost } from "@/lib/guides";
+import { toSummary } from "@/lib/post";
 import { jsonLd } from "@/lib/seo";
 import { slugify } from "@/lib/slugify";
 
 export function LandingView({ page }: { page: LandingPage }) {
+  const posts = getAllPosts()
+    .filter((post) => guideForPost(post).slug === page.slug)
+    .slice(0, 3);
   const crumbs = [
-    { name: "Home", path: "/" },
+    { name: "Guides", path: "/guides" },
     { name: page.eyebrow, path: `/${page.slug}` },
   ];
 
@@ -98,6 +105,19 @@ export function LandingView({ page }: { page: LandingPage }) {
           ))}
         </ul>
       </Container>
+
+      {posts.length > 0 && (
+        <Container className="mt-16">
+          <h2 className="text-h4">From the blog</h2>
+          <ul className="mt-4 grid gap-6 md:grid-cols-3">
+            {posts.map((post) => (
+              <li key={post.slug}>
+                <PostCard post={toSummary(post)} />
+              </li>
+            ))}
+          </ul>
+        </Container>
+      )}
 
       <CtaBand />
     </>
