@@ -13,9 +13,9 @@ import { across, cta, hero, steps } from "@/content/pages/solutions";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Solutions",
+  title: "End-to-End Calibration Lab Workflow",
   description:
-    "Calibration software that follows every instrument from due alert to delivery: customer portal, scheduling, smart worksheets, offline capture, approval, certificates and shipping.",
+    "Follow every instrument from due alert to delivery: customer portal, scheduling, smart worksheets, offline capture, approval, certificates and shipping.",
   path: "/solutions",
 });
 

@@ -8,7 +8,7 @@ import { Header } from "@/components/layout/Header";
 import { MotionProvider } from "@/components/layout/MotionProvider";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { site } from "@/config/site";
-import { jsonLd, OG_IMAGE } from "@/lib/seo";
+import { jsonLd, OG_IMAGE, SITE_ALTERNATES } from "@/lib/seo";
 
 const manrope = Manrope({ subsets: ["latin"], display: "swap", variable: "--font-manrope" });
 
@@ -19,12 +19,7 @@ export const metadata: Metadata = {
   applicationName: site.name,
   openGraph: { siteName: site.name, locale: "en_US", images: [OG_IMAGE] },
   twitter: { card: "summary_large_image" },
-  alternates: {
-    types: {
-      "text/plain": [{ url: "/llms.txt", title: "llms.txt" }],
-      "application/rss+xml": [{ url: "/blog/feed.xml", title: `${site.name} blog` }],
-    },
-  },
+  alternates: { types: SITE_ALTERNATES },
   verification: {
     google: site.verification.google,
     other: site.verification.bing ? { "msvalidate.01": site.verification.bing } : undefined,

@@ -48,6 +48,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: post.updated ?? post.date,
       changeFrequency: "yearly" as const,
       priority: 0.6,
+      images: [absoluteUrl(`/og/blog/${post.slug}.png`)],
     })),
   ];
 }

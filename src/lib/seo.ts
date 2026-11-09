@@ -6,6 +6,33 @@ import type { Post } from "./post";
 
 export const OG_IMAGE = { url: "/og/default.png", width: 1200, height: 630, alt: site.name };
 
+export const SITE_ALTERNATES = {
+  "text/plain": [{ url: "/llms.txt", title: "llms.txt" }],
+  "application/rss+xml": [{ url: "/blog/feed.xml", title: `${site.name} blog` }],
+};
+
+const TITLE_MAX = 60;
+const DESCRIPTION_MAX = 160;
+
+export const metaTitle = (title: string) => {
+  const branded = `${title} | ${site.name}`;
+  return branded.length <= TITLE_MAX ? branded : title;
+};
+
+export function metaDescription(text: string) {
+  const clean = text.replace(/\s+/g, " ").trim();
+  if (clean.length <= DESCRIPTION_MAX) return clean;
+  const sentences = clean.match(/[^.!?]+[.!?]+(\s|$)/g) ?? [];
+  let fit = "";
+  for (const sentence of sentences) {
+    if ((fit + sentence).trim().length > DESCRIPTION_MAX) break;
+    fit += sentence;
+  }
+  if (fit.trim().length >= 70) return fit.trim();
+  const cut = clean.slice(0, DESCRIPTION_MAX - 1);
+  return `${cut.slice(0, cut.lastIndexOf(" ")).replace(/[,;:]$/, "")}…`;
+}
+
 type PageMeta = {
   title: string;
   image?: string;
@@ -15,24 +42,30 @@ type PageMeta = {
   publishedTime?: string;
   modifiedTime?: string;
   absoluteTitle?: boolean;
+  markdown?: boolean;
 };
 
 export function pageMetadata({
   title,
-  description,
+  description: rawDescription,
   path,
   type = "website",
   absoluteTitle,
   image,
+  markdown,
   ...times
 }: PageMeta): Metadata {
   const images = image ? [{ url: image, width: 1200, height: 630, alt: title }] : [OG_IMAGE];
   const url = absoluteUrl(path);
-  const fullTitle = absoluteTitle ? title : `${title} | ${site.name}`;
+  const fullTitle = absoluteTitle ? title : metaTitle(title);
+  const description = metaDescription(rawDescription);
   return {
-    title: absoluteTitle ? { absolute: title } : title,
+    title: { absolute: fullTitle },
     description,
-    alternates: { canonical: url },
+    alternates: {
+      canonical: url,
+      types: { ...SITE_ALTERNATES, ...(markdown && { "text/markdown": `${url}.md` }) },
+    },
     openGraph: {
       type,
       url,
@@ -47,6 +80,8 @@ export function pageMetadata({
 }
 
 const organizationId = `${site.url}/#organization`;
+const websiteId = `${site.url}/#website`;
+const blogId = `${site.url}/blog#blog`;
 
 export const jsonLd = {
   organization: () => ({
@@ -69,12 +104,30 @@ export const jsonLd = {
       addressCountry: site.address.country,
     },
     sameAs: [site.social.linkedin, site.social.youtube],
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "sales",
+      email: site.contactEmail,
+      telephone: site.phone,
+      areaServed: "Worldwide",
+      availableLanguage: "English",
+    },
+    knowsAbout: [
+      "Calibration management software",
+      "ISO/IEC 17025",
+      "FDA 21 CFR Part 11",
+      "Measurement uncertainty",
+      "Metrology",
+      "Calibration laboratory management",
+    ],
   }),
 
   website: () => ({
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": websiteId,
     name: site.name,
+    inLanguage: "en",
     url: absoluteUrl("/"),
     publisher: { "@id": organizationId },
   }),
@@ -120,7 +173,8 @@ export const jsonLd = {
     description,
     url: absoluteUrl(path),
     dateModified: updated,
-    isPartOf: { "@type": "WebSite", url: absoluteUrl("/") },
+    isPartOf: { "@id": websiteId },
+    inLanguage: "en",
     about: { "@type": "Thing", name: "Calibration management software" },
     publisher: { "@id": organizationId },
   }),
@@ -168,10 +222,29 @@ export const jsonLd = {
     datePublished: post.date,
     dateModified: post.updated ?? post.date,
     articleSection: post.category,
+    inLanguage: "en",
+    isPartOf: { "@id": blogId },
     url: absoluteUrl(`/blog/${post.slug}`),
     mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
     image,
     author: { "@id": organizationId },
     publisher: { "@id": organizationId },
+  }),
+
+  blog: (posts: Post[]) => ({
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": blogId,
+    name: `${site.name} blog`,
+    url: absoluteUrl("/blog"),
+    inLanguage: "en",
+    isPartOf: { "@id": websiteId },
+    publisher: { "@id": organizationId },
+    blogPost: posts.slice(0, 20).map((post) => ({
+      "@type": "BlogPosting",
+      headline: post.title,
+      url: absoluteUrl(`/blog/${post.slug}`),
+      datePublished: post.date,
+    })),
   }),
 };

@@ -24,7 +24,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Ecosystem & Integrations",
   description:
-    "metquay.ai integrates with Odoo, NetSuite, QuickBooks, Dynamics 365, Business Central, Xero, Fluke MET/CAL, MET/CONNECT and metrology.net, plus a REST API and webhooks.",
+    "Calibration software integrations: Odoo, NetSuite, QuickBooks, Dynamics 365, Business Central, Xero, Fluke MET/CAL and metrology.net, plus a REST API.",
   path: "/ecosystem",
 });
 

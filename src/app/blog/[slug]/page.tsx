@@ -31,6 +31,7 @@ export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): P
         image: `/og/blog/${post.slug}.png`,
         publishedTime: post.date,
         modifiedTime: post.updated ?? post.date,
+        markdown: true,
       })
     : {};
 }

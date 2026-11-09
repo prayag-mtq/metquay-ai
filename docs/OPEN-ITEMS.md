@@ -39,3 +39,6 @@ The site now has keyword landing pages, a glossary, category hubs, an RSS feed, 
 4. **Brand name**: pick one ("metquay.ai" vs "Metquay"). Inconsistent naming splits entity signals (deferred item 2).
 5. **Fresh content**: publish regularly (the blog's last posts drive "freshness"), and update the guide pages' `updated` date when content changes.
 6. **Review the new copy**: `src/content/landing.ts` and `src/content/glossary.ts` were written from facts already on the site plus standard metrology definitions. Have a domain expert check them before launch.
+7. **Long blog titles**: 60 posts have titles over 70 characters, which Google truncates in results. Give the important posts a shorter search title (needs an optional `seoTitle` front-matter field; `npm run audit:seo` lists them).
+8. **Security contact**: `public/.well-known/security.txt` uses `consulting@metquay.com` and expires 2027-11-09. Swap in a dedicated security address if there is one, and renew the date yearly.
+9. **Preview domains**: every `*.vercel.app` response sends `X-Robots-Tag: noindex`, so previews never compete with `www.metquay.com`. The production domain is unaffected.

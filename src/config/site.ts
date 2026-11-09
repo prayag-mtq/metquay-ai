@@ -8,7 +8,7 @@ export const site = {
   tagline: "Calibration operations platform",
   contentUpdated: "2026-11-07",
   description:
-    "Asset-centric calibration management software for ISO/IEC 17025 labs. Manage the complete process from customer portal to shipping, with offline workflows and AI built in.",
+    "Calibration management software for ISO/IEC 17025 labs. Run the full process from customer portal to shipping, offline-ready, with AI built in.",
   contactEmail: "consulting@metquay.com",
   phone: "+1 971 340 9608",
   address: {

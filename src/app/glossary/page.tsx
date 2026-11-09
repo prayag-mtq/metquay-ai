@@ -14,6 +14,7 @@ export const metadata: Metadata = pageMetadata({
   description:
     "Definitions of calibration terms: measurement uncertainty, traceability, TUR, coverage factor k, Gage R&R, ISO/IEC 17025, 21 CFR Part 11 and more.",
   path: "/glossary",
+  markdown: true,
 });
 
 function termLink(term: GlossaryTerm) {

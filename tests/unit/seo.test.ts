@@ -82,7 +82,14 @@ describe("llms.txt", () => {
 
   it("follows the llms.txt structure", () => {
     expect(txt.startsWith("# metquay.ai\n\n> ")).toBe(true);
-    for (const section of ["## Product", "## Solutions", "## Integrations", "## Compliance", "## Company", "## Blog"]) {
+    for (const section of [
+      "## Product",
+      "## Solutions",
+      "## Integrations",
+      "## Compliance",
+      "## Company",
+      "## Optional",
+    ]) {
       expect(txt).toContain(section);
     }
   });
@@ -90,7 +97,7 @@ describe("llms.txt", () => {
   it("links only absolute canonical URLs and every post", () => {
     const links = [...txt.matchAll(/\]\(([^)]+)\)/g)].map((m) => m[1]);
     expect(links.every((l) => l.startsWith("https://www.metquay.com/"))).toBe(true);
-    expect(links.filter((l) => l.includes("/blog/"))).toHaveLength(97);
+    expect(links.filter((l) => /\/blog\/.+\.md$/.test(l))).toHaveLength(97);
   });
 
   it("has a full-text companion with the marketing pages", () => {

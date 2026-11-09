@@ -3,7 +3,17 @@ import { expect, test } from "@playwright/test";
 import { sitemapPaths } from "../support/routes";
 
 test("discovery files are served", async ({ request }) => {
-  for (const path of ["/robots.txt", "/sitemap.xml", "/llms.txt", "/llms-full.txt"]) {
+  for (const path of [
+    "/robots.txt",
+    "/sitemap.xml",
+    "/llms.txt",
+    "/llms-full.txt",
+    "/manifest.webmanifest",
+    "/.well-known/security.txt",
+    "/glossary.md",
+    "/calibration-management-software.md",
+    "/blog/monte-carlo-method.md",
+  ]) {
     const res = await request.get(path);
     expect(res.status(), path).toBe(200);
   }

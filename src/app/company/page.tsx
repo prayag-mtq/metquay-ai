@@ -15,7 +15,7 @@ import { cta, hero, hq, milestones, principles, story, team } from "@/content/pa
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Company",
+  title: "About Metquay, the Calibration Software Company",
   description:
     "Metquay builds asset-centric, human-verified, AI-supercharged calibration management software. Meet the team in Bellevue, WA.",
   path: "/company",

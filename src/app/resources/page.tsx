@@ -16,7 +16,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Resources & Playbooks",
   description:
-    "Seven free playbooks for calibration labs: digital transformation, migration, ERP integration, Fluke MET/CAL, FDA validation, ISO/IEC 17025 audit prep and marketing.",
+    "Seven free calibration lab playbooks: digital transformation, migration, ERP integration, Fluke MET/CAL, FDA validation and ISO/IEC 17025 audit prep.",
   path: "/resources",
 });
 

@@ -1,4 +1,5 @@
-import { writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
+import { dirname } from "node:path";
 import { pathToFileURL } from "node:url";
 
 import { absoluteUrl, site } from "../src/config/site";
@@ -11,9 +12,13 @@ import * as resources from "../src/content/pages/resources";
 import * as solutions from "../src/content/pages/solutions";
 import { getAllPosts } from "../src/lib/blog";
 import { getLegalPage } from "../src/lib/legal";
+import { toMarkdown } from "../src/lib/markdown";
+import type { Post } from "../src/lib/post";
 
 const link = (title: string, path: string, note?: string) =>
   `- [${title}](${absoluteUrl(path)})${note ? `: ${note}` : ""}`;
+
+const oneLine = (text: string) => text.replace(/\s+/g, " ").trim();
 
 const SUMMARY =
   "metquay.ai is asset-centric calibration management software for ISO/IEC 17025 calibration labs, built by Metquay Inc. (Bellevue, WA). It runs the full calibration workflow, from customer portal and scheduling to smart worksheets, offline capture, approval, certificates and shipping, with FDA 21 CFR Part 11 controls, ERP integrations and AI interval optimization.";
@@ -24,6 +29,7 @@ export function buildLlmsTxt() {
   return [
     `# ${site.name}`,
     `> ${SUMMARY}`,
+    "Guides, the glossary and every blog post have a clean Markdown copy at the same URL with .md appended; the links below point to those copies.",
     [
       "Key facts:",
       "- Category: calibration management software / calibration lab management (LIMS for calibration labs)",
@@ -33,10 +39,10 @@ export function buildLlmsTxt() {
     ].join("\n"),
     [
       "## Guides",
-      ...landingPages.map((p) => link(p.title, `/${p.slug}`, p.summary)),
+      ...landingPages.map((p) => link(p.title, `/${p.slug}.md`, p.summary)),
       link(
         "Calibration & metrology glossary",
-        "/glossary",
+        "/glossary.md",
         "Definitions of TUR, uncertainty, traceability, coverage factor and more",
       ),
     ].join("\n"),
@@ -71,7 +77,12 @@ export function buildLlmsTxt() {
       link("Resources & playbooks", "/resources", resources.hero.lead),
       link("Contact", "/contact", "Free trial, demo requests and questions"),
     ].join("\n"),
-    ["## Blog", ...posts.map((p) => link(p.title, `/blog/${p.slug}`, p.description))].join("\n"),
+    [
+      "## Optional",
+      link("Blog index", "/blog", "Articles on calibration lab operations, metrology, compliance and software"),
+      link("RSS feed", "/blog/feed.xml"),
+      ...posts.map((p) => link(p.title, `/blog/${p.slug}.md`, oneLine(p.description))),
+    ].join("\n"),
   ].join("\n\n");
 }
 
@@ -138,8 +149,46 @@ export function buildLlmsFull() {
   ].join("\n\n---\n\n");
 }
 
+const postMarkdown = (post: Post) =>
+  [
+    `# ${post.title}`,
+    `> ${oneLine(post.description)}`,
+    `Published ${post.date} · ${post.category} · ${absoluteUrl(`/blog/${post.slug}`)}`,
+    toMarkdown(post.body),
+  ].join("\n\n");
+
+const landingMarkdown = (page: (typeof landingPages)[number]) =>
+  [
+    `# ${page.title}`,
+    `> ${page.summary}`,
+    `Updated ${page.updated} · ${absoluteUrl(`/${page.slug}`)}`,
+    ...page.sections.map((s) => [`## ${s.heading}`, ...s.body, ...(s.points ? [bullets(s.points)] : [])].join("\n\n")),
+    "## Frequently asked questions",
+    ...page.faq.map((f) => `### ${f.q}\n\n${f.a}`),
+  ].join("\n\n");
+
+const glossaryMarkdown = () =>
+  [
+    "# Calibration & metrology glossary",
+    absoluteUrl("/glossary"),
+    ...glossary.map((t) => `## ${t.term}\n\n${t.definition}`),
+  ].join("\n\n");
+
+export const markdownFiles = (): Record<string, string> => ({
+  "glossary.md": glossaryMarkdown(),
+  ...Object.fromEntries(landingPages.map((p) => [`${p.slug}.md`, landingMarkdown(p)])),
+  ...Object.fromEntries(getAllPosts().map((p) => [`blog/${p.slug}.md`, postMarkdown(p)])),
+});
+
+const write = (path: string, content: string) => {
+  mkdirSync(dirname(path), { recursive: true });
+  writeFileSync(path, `${content}\n`);
+};
+
 if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) {
-  writeFileSync("public/llms.txt", `${buildLlmsTxt()}\n`);
-  writeFileSync("public/llms-full.txt", `${buildLlmsFull()}\n`);
-  console.log("wrote public/llms.txt and public/llms-full.txt");
+  write("public/llms.txt", buildLlmsTxt());
+  write("public/llms-full.txt", buildLlmsFull());
+  const files = markdownFiles();
+  for (const [path, content] of Object.entries(files)) write(`public/${path}`, content);
+  console.log(`wrote llms.txt, llms-full.txt and ${Object.keys(files).length} markdown copies`);
 }

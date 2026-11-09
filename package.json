@@ -7,6 +7,7 @@
     "dev": "next dev",
     "prebuild": "tsx scripts/gen-llms.ts && tsx scripts/gen-og.ts && tsx scripts/gen-image-variants.ts",
     "build": "next build",
+    "audit:seo": "node scripts/audit-seo.mjs",
     "lint": "eslint",
     "test": "vitest run",
     "e2e": "playwright test",

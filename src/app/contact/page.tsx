@@ -12,7 +12,7 @@ import { faq } from "@/content/pages/home";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Contact",
+  title: "Contact Sales, Book a Demo or Start a Trial",
   description:
     "Talk to the Metquay team about calibration management software, a free trial, migration or integrations.",
   path: "/contact",
