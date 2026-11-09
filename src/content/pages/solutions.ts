@@ -158,7 +158,7 @@ export const steps: Step[] = [
   },
 ];
 
-export type AcrossIcon = "dashboard" | "workspace" | "erp";
+type AcrossIcon = "dashboard" | "workspace" | "erp";
 
 export const across = {
   eyebrow: "Across every stage",

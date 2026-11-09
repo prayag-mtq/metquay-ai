@@ -1,7 +1,7 @@
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 
-export type Crumb = { name: string; path: string };
+type Crumb = { name: string; path: string };
 
 export function Breadcrumbs({ items }: { items: Crumb[] }) {
   return (

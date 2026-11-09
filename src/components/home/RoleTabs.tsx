@@ -1,5 +1,5 @@
-import { Check } from "lucide-react";
 import { Container } from "@/components/ui/Container";
+import { CheckList } from "@/components/ui/CheckList";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Tabs } from "@/components/ui/Tabs";
@@ -19,14 +19,7 @@ export function RoleTabs() {
             <p className="text-small font-semibold text-purple">{role.label}</p>
             <h3 className="mt-2 text-h3">{role.headline}</h3>
           </div>
-          <ul className="space-y-4">
-            {role.points.map((point) => (
-              <li key={point} className="flex gap-3 text-body text-muted">
-                <Check aria-hidden="true" className="mt-1 size-4 shrink-0 text-lime" />
-                {point}
-              </li>
-            ))}
-          </ul>
+          <CheckList items={role.points} />
         </div>
       ),
     };

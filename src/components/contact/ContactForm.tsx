@@ -13,7 +13,7 @@ export const topics = {
   general: "General question",
 } as const;
 
-export type Intent = keyof typeof topics;
+type Intent = keyof typeof topics;
 
 export const isIntent = (value: string | null): value is Intent => value !== null && Object.hasOwn(topics, value);
 

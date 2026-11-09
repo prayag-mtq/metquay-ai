@@ -5,7 +5,7 @@ import { useId, useRef, useState, type KeyboardEvent, type ReactNode } from "rea
 import { cn } from "@/lib/cn";
 import { presets } from "@/lib/motion";
 
-export type TabItem = { id: string; label: string; icon?: ReactNode; panel: ReactNode };
+type TabItem = { id: string; label: string; icon?: ReactNode; panel: ReactNode };
 
 type TabsProps = { label: string; items: TabItem[]; className?: string };
 

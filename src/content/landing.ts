@@ -1,4 +1,4 @@
-export type LandingSection = {
+type LandingSection = {
   heading: string;
   body: string[];
   points?: string[];

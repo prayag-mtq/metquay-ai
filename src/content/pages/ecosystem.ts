@@ -4,7 +4,7 @@ export const hero = {
   lead: "metquay.ai plugs into your ERP, finance, metrology, and hardware stack. An open REST API plus webhooks cover anything custom. No data silos. No double entry.",
 };
 
-export type GroupIcon = "erp" | "metrology" | "hardware" | "developer";
+type GroupIcon = "erp" | "metrology" | "hardware" | "developer";
 
 export const groups: { icon: GroupIcon; title: string; meta: string; body: string; href: string }[] = [
   {

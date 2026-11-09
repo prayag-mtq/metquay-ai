@@ -1,9 +1,9 @@
 import { ArrowRight, BookOpen, Clock } from "lucide-react";
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
-import Link from "next/link";
 import { PageHero } from "@/components/layout/PageHero";
 import { Button } from "@/components/ui/Button";
+import { CardLink } from "@/components/ui/CardLink";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
@@ -143,13 +143,12 @@ export default function ResourcesPage() {
           <SectionHeader id="more-title" eyebrow={more.eyebrow} title={more.title} />
           <ul className="mt-12 grid gap-5 md:grid-cols-3">
             {more.items.map((item) => {
-              const external = item.href.startsWith("http");
               return (
                 <li key={item.title}>
-                  <Link
+                  <CardLink
                     href={item.href}
-                    {...(external && { target: "_blank", rel: "noopener noreferrer" })}
-                    className="group flex h-full flex-col rounded-2xl border border-border bg-card p-7 transition hover:-translate-y-0.5 hover:border-border-strong"
+                    external={item.href.startsWith("http")}
+                    className="flex h-full flex-col p-7"
                   >
                     <span className="text-h4 font-semibold">{item.title}</span>
                     <span className="mt-2 flex-1 text-body text-muted">{item.body}</span>
@@ -160,7 +159,7 @@ export default function ResourcesPage() {
                         className="size-4 transition-transform group-hover:translate-x-1"
                       />
                     </span>
-                  </Link>
+                  </CardLink>
                 </li>
               );
             })}

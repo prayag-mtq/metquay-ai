@@ -1,17 +1,8 @@
 import { Plus } from "lucide-react";
+import { jsonLd } from "@/lib/seo";
 import { JsonLd } from "./JsonLd";
 
-export type FaqItem = { id: string; q: string; a: string };
-
-export const faqJsonLd = (items: FaqItem[]) => ({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: items.map((item) => ({
-    "@type": "Question",
-    name: item.q,
-    acceptedAnswer: { "@type": "Answer", text: item.a },
-  })),
-});
+type FaqItem = { id: string; q: string; a: string };
 
 export function Faq({ items }: { items: FaqItem[] }) {
   return (
@@ -30,7 +21,7 @@ export function Faq({ items }: { items: FaqItem[] }) {
           </details>
         ))}
       </div>
-      <JsonLd data={faqJsonLd(items)} />
+      <JsonLd data={jsonLd.faqPage(items)} />
     </>
   );
 }

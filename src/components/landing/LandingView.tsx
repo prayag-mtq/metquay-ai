@@ -1,8 +1,9 @@
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { CtaBand } from "@/components/layout/CtaBand";
 import { Button } from "@/components/ui/Button";
+import { CheckList } from "@/components/ui/CheckList";
 import { Container } from "@/components/ui/Container";
 import { Faq } from "@/components/ui/Faq";
 import { JsonLd } from "@/components/ui/JsonLd";
@@ -10,6 +11,7 @@ import { Pill } from "@/components/ui/Pill";
 import { site } from "@/config/site";
 import type { LandingPage } from "@/content/landing";
 import { formatDate } from "@/lib/post";
+import { slugify } from "@/lib/slugify";
 import { jsonLd } from "@/lib/seo";
 
 export function LandingView({ page }: { page: LandingPage }) {
@@ -47,8 +49,8 @@ export function LandingView({ page }: { page: LandingPage }) {
 
       <Container width="reading" className="mt-14 space-y-12 border-t border-border pt-12">
         {page.sections.map((section) => (
-          <section key={section.heading} aria-labelledby={slug(section.heading)}>
-            <h2 id={slug(section.heading)} className="text-h3">
+          <section key={section.heading} aria-labelledby={slugify(section.heading)}>
+            <h2 id={slugify(section.heading)} className="text-h3">
               {section.heading}
             </h2>
             <div className="mt-4 space-y-4 text-body-lg text-muted">
@@ -56,16 +58,7 @@ export function LandingView({ page }: { page: LandingPage }) {
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
-            {section.points && (
-              <ul className="mt-5 space-y-3">
-                {section.points.map((point) => (
-                  <li key={point} className="flex gap-3 text-body text-muted">
-                    <Check aria-hidden="true" className="mt-1 size-4 shrink-0 text-lime" />
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            )}
+            {section.points && <CheckList items={section.points} className="mt-5" />}
             {section.link && (
               <Link
                 href={section.link.href}
@@ -109,9 +102,3 @@ export function LandingView({ page }: { page: LandingPage }) {
     </>
   );
 }
-
-const slug = (text: string) =>
-  text
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");

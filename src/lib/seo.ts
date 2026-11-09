@@ -137,6 +137,16 @@ export const jsonLd = {
     })),
   }),
 
+  faqPage: (items: { q: string; a: string }[]) => ({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  }),
+
   breadcrumbs: (items: { name: string; path: string }[]) => ({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

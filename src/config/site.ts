@@ -1,5 +1,5 @@
 export type NavLink = { label: string; href: string; external?: boolean };
-export type FooterColumn = { heading: string; links: NavLink[] };
+type FooterColumn = { heading: string; links: NavLink[] };
 
 export const site = {
   name: "metquay.ai",

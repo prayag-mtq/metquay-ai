@@ -1,5 +1,5 @@
-import { Check } from "lucide-react";
 import { Screenshot } from "@/components/ui/Screenshot";
+import { CheckList } from "@/components/ui/CheckList";
 import { Container } from "@/components/ui/Container";
 import { Pill } from "@/components/ui/Pill";
 import { Reveal } from "@/components/ui/Reveal";
@@ -27,14 +27,7 @@ export function PlatformFeatures() {
                   {feature.title}
                 </h3>
                 <p className="mt-4 text-body-lg text-muted">{feature.body}</p>
-                <ul className="mt-6 space-y-3">
-                  {feature.points.map((point) => (
-                    <li key={point} className="flex gap-3 text-body text-muted">
-                      <Check aria-hidden="true" className="mt-1 size-4 shrink-0 text-lime" />
-                      {point}
-                    </li>
-                  ))}
-                </ul>
+                <CheckList items={feature.points} className="mt-6" />
               </Reveal>
               <Reveal index={1}>
                 <Screenshot {...feature.image} />

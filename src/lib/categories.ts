@@ -1,10 +1,7 @@
 import { getCategories } from "./blog";
+import { slugify } from "./slugify";
 
-export const categorySlug = (category: string) =>
-  category
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
+export const categorySlug = slugify;
 
 export const categoryFromSlug = (slug: string) => getCategories().find((c) => categorySlug(c) === slug) ?? null;
 

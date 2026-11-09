@@ -1,12 +1,11 @@
 import { mkdirSync } from "node:fs";
 import sharp from "sharp";
 import { getAllPosts } from "../src/lib/blog";
+import { escapeXml } from "../src/lib/xml";
 
 const WIDTH = 1200;
 const HEIGHT = 630;
 const FONT = "Manrope, Segoe UI, DejaVu Sans, Arial, sans-serif";
-
-const escapeXml = (text: string) => text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 export function wrap(text: string, maxChars: number, maxLines: number) {
   const lines: string[] = [];

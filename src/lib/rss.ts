@@ -1,13 +1,6 @@
 import { absoluteUrl, site } from "@/config/site";
 import { getAllPosts } from "./blog";
-
-const escapeXml = (text: string) =>
-  text
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&apos;");
+import { escapeXml } from "./xml";
 
 const rfc822 = (iso: string) => new Date(`${iso}T12:00:00Z`).toUTCString();
 

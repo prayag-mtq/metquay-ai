@@ -1,7 +1,6 @@
-import { Check, Code2, Cpu, Gauge, Landmark } from "lucide-react";
+import { Code2, Cpu, Gauge, Landmark } from "lucide-react";
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
-import Link from "next/link";
 import type { ReactNode } from "react";
 import { IntegrationDirectory } from "@/components/ecosystem/IntegrationDirectory";
 import { SyncFlow } from "@/components/ecosystem/SyncFlow";
@@ -9,6 +8,8 @@ import { SyncTable } from "@/components/ecosystem/SyncTable";
 import { CtaBand } from "@/components/layout/CtaBand";
 import { PageHero } from "@/components/layout/PageHero";
 import { Button } from "@/components/ui/Button";
+import { CardLink } from "@/components/ui/CardLink";
+import { CheckList } from "@/components/ui/CheckList";
 import { Container } from "@/components/ui/Container";
 import { Pill } from "@/components/ui/Pill";
 import { Reveal } from "@/components/ui/Reveal";
@@ -72,15 +73,12 @@ export default function EcosystemPage() {
               const Icon = groupIcons[group.icon];
               return (
                 <li key={group.title}>
-                  <Link
-                    href={group.href}
-                    className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition hover:-translate-y-0.5 hover:border-border-strong"
-                  >
+                  <CardLink href={group.href} className="flex h-full flex-col p-6">
                     <Icon aria-hidden="true" className="size-7 text-purple" strokeWidth={1.6} />
                     <span className="mt-5 text-h4 font-semibold group-hover:text-lime">{group.title}</span>
                     <span className="mt-1 text-small font-semibold text-lime">{group.meta}</span>
                     <span className="mt-2 text-small text-muted">{group.body}</span>
-                  </Link>
+                  </CardLink>
                 </li>
               );
             })}
@@ -106,14 +104,7 @@ export default function EcosystemPage() {
       </Section>
 
       <Split id="api" label={api.label} title={api.title} body={api.body}>
-        <ul className="mb-6 space-y-3">
-          {api.points.map((point) => (
-            <li key={point} className="flex gap-3 text-body text-muted">
-              <Check aria-hidden="true" className="mt-1 size-4 shrink-0 text-lime" />
-              {point}
-            </li>
-          ))}
-        </ul>
+        <CheckList items={api.points} className="mb-6" />
         <div className="rounded-2xl border border-border bg-surface p-5 font-mono text-small">
           <p className="text-xs font-semibold tracking-wide text-subtle uppercase">Webhook events</p>
           <ul className="mt-3 space-y-2">

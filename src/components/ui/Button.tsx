@@ -23,7 +23,7 @@ type LinkProps = Style & { href: string; children: ReactNode } & Omit<
   >;
 type NativeProps = Style & { href?: undefined; children: ReactNode } & Omit<ComponentProps<"button">, "className">;
 
-export const buttonClass = ({ size = "md", variant = "primary", className }: Style) =>
+const buttonClass = ({ size = "md", variant = "primary", className }: Style) =>
   cn(base, sizes[size], variants[variant], className);
 
 export function Button(props: LinkProps | NativeProps) {

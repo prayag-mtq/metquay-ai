@@ -1,5 +1,5 @@
-import { Check } from "lucide-react";
 import { Container } from "@/components/ui/Container";
+import { CheckList } from "@/components/ui/CheckList";
 import { Pill } from "@/components/ui/Pill";
 import { Reveal } from "@/components/ui/Reveal";
 import { Screenshot } from "@/components/ui/Screenshot";
@@ -24,14 +24,7 @@ export function WorkflowStep({ step, index }: { step: Step; index: number }) {
             {step.title}
           </h2>
           <p className="mt-4 text-body-lg text-muted">{step.body}</p>
-          <ul className="mt-6 space-y-3">
-            {step.points.map((point) => (
-              <li key={point} className="flex gap-3 text-body text-muted">
-                <Check aria-hidden="true" className="mt-1 size-4 shrink-0 text-lime" />
-                {point}
-              </li>
-            ))}
-          </ul>
+          <CheckList items={step.points} className="mt-6" />
           <figure className="mt-8 border-l-2 border-purple pl-5">
             <blockquote className="text-body text-text italic">“{step.quote.text}”</blockquote>
             {step.quote.by && <figcaption className="mt-2 text-small text-subtle">— {step.quote.by}</figcaption>}
